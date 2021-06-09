@@ -1,0 +1,29 @@
+@import "src/variables/variables";
+
+.slider {
+  padding-top: 20px;
+
+  &-header {
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $c-dark-gray;
+  }
+
+  &-title {
+    color: $c-white;
+  }
+
+  &-arrows {
+    span {
+      cursor: pointer;
+      color: $c-white;
+    }
+  }
+
+  &-block {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+  }
+}

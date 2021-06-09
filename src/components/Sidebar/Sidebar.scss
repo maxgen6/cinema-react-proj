@@ -1,0 +1,37 @@
+@import "src/variables/variables";
+
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: rgba($c-main-background, .85);
+
+  &-navigation__list {
+    padding: 20px;
+
+  }
+
+  &-navigation__item {
+    margin-bottom: 30px;
+
+  }
+
+  &-logo {
+    color: $c-dark-gray;
+    .active {
+      color: #fff;
+
+      span {
+        color: #fff;
+      }
+    }
+    span {
+      color: $c-dark-gray;
+    }
+
+    &:hover, &:hover span {
+      color: $c-white;
+    }
+  }
+}

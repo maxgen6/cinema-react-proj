@@ -1,0 +1,25 @@
+@import "src/variables/variables";
+
+.card-item {
+
+  margin-bottom: 10px;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  &__title {
+    color: $c-white;
+  }
+
+  &__genres {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 12px;
+    color: $c-dark-gray;
+    text-transform: uppercase;
+  }
+}

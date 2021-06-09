@@ -1,0 +1,42 @@
+@import "src/variables/variables";
+
+.tabs {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-item {
+    position: relative;
+    color: $c-dark-gray;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .3s all;
+
+    &:hover {
+      color: $c-white;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 40%;
+        height: 1px;
+        background: #076f78;
+        bottom: -3px;
+        left: 30%;
+      }
+    }
+
+    &__active {
+      color: $c-white;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 40%;
+        height: 1px;
+        background: #076f78;
+        bottom: -3px;
+        left: 30%;
+      }
+    }
+  }
+}
