@@ -18,9 +18,6 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 
 export default function Slider() {
-
-  const cardInfo = useContext(Context)
-
   // const [counter, setCounter] = useState(1)
   //
   // const handlerRunSlider= () => {
@@ -50,13 +47,40 @@ export default function Slider() {
   //   handlerRunSlider()
   // }
 
+  const cardInfo = useContext(Context)
+
+  const [disabledBtnLeft, setDisabledBtnLeft] = useState(true)
+  const [disabledBtnRight, setDisabledBtnRight] = useState(false)
+
+  const handlerDisabledBtn = () => {
+    const slides = document.querySelectorAll('.swiper-slide')
+    setDisabledBtnLeft(false)
+
+    slides[slides.length - 5].classList.contains('swiper-slide-active')
+      ? setDisabledBtnRight(true)
+      : setDisabledBtnRight(false)
+
+    if (slides[1].classList.contains('swiper-slide-active')) {
+      setDisabledBtnLeft(true)
+    }
+  }
+
+  const handlerRightSlider = () => setDisabledBtnLeft(false)
+  const handlerLeftSlider = () => setDisabledBtnRight(false)
+
   return (
     <div className="slider">
       <div className="slider-header">
         <h4 className="slider-title">TV Series</h4>
         <p className="slider-arrows">
-          <span className="material-icons arrow-left">keyboard_arrow_left</span>
-          <span className="material-icons arrow-right">keyboard_arrow_right</span>
+          <span
+            className={disabledBtnLeft ? "material-icons arrow-left disabled" : "material-icons arrow-left"}
+            onClick={handlerLeftSlider}
+          >keyboard_arrow_left</span>
+          <span
+            className={disabledBtnRight ? "material-icons arrow-right disabled" : "material-icons arrow-right"}
+            onClick={handlerRightSlider}
+          >keyboard_arrow_right</span>
         </p>
       </div>
       <div className="slider-block">
@@ -68,10 +92,10 @@ export default function Slider() {
             prevEl: `.arrow-left`
           }}
           onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
+          onSlideChange={() => handlerDisabledBtn()}
         >
             {cardInfo.map((item, index, arr) => (
-              <SwiperSlide className="card-item" key={item.id + index} >
+              <SwiperSlide className="card-item" key={item.id + index} tag="a" href="/#">
                 <img src={item.img} alt="img"/>
                 <p className="card-item__title">{item.title}</p>
                 <p className="card-item__genres">{item.genres} <span>{item.score}</span></p>
