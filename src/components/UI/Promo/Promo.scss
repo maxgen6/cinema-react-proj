@@ -1,4 +1,4 @@
-@import "src/variables/variables";
+@import "../../../variables/variables";
 
 
 .promo {
@@ -54,7 +54,7 @@
     a {
       margin-right: 20px;
       padding: 5px 15px;
-      background: #42a5db;
+      background: $c-button;
       color: $c-white;
       border-radius: 20px;
       transition: .3s all;
@@ -68,6 +68,12 @@
       display: flex;
       color: $c-white;
       cursor: pointer;
+      transition: .3s all;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+
       .play {
         margin-right: 5px;
       }

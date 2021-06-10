@@ -1,8 +1,8 @@
 import React from "react";
 import './MainContent.scss'
-import Promo from "./Promo/Promo";
-import Tabs from "./Tabs/Tabs";
-import Slider from "./Slider/Slider";
+import Promo from "../../UI/Promo/Promo";
+import Tabs from "../../UI/Tabs/Tabs";
+import Slider from "../../UI/Slider/Slider";
 
 
 export default function MainContent() {

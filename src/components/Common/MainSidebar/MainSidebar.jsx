@@ -1,6 +1,6 @@
 import React from "react";
 import './MainSidebar.scss'
-import Cards from "../MainContent/Cards/Cards";
+import Cards from "../../UI/Cards/Cards";
 
 export default function MainSidebar() {
 

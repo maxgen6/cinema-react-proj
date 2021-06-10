@@ -1,8 +1,9 @@
-@import "src/variables/variables";
+@import "../../../variables/variables";
 
 .header {
-  padding: 10px 20px;
-  background: rgba($c-main-background, .8);
+  padding: 15px 20px;
+  background: $c-main-background;
+  box-shadow: -7px 3px 17px -6px rgba(0, 0, 0, .3);
 
   &-list {
     display: flex;
@@ -82,7 +83,7 @@
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    background: rgba($c-main-background, .8);
+    background: $c-main-background;
     top: 128%;
     left: 0;
     width: 100%;

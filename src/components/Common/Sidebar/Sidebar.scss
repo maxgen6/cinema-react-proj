@@ -1,31 +1,33 @@
-@import "src/variables/variables";
+@import "../../../variables/variables";
 
 
 .sidebar {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: rgba($c-main-background, .85);
+  background: $c-main-background;
 
   &-navigation__list {
-    padding: 20px;
-
+    padding: 20px 15px;
+    position: fixed;
   }
 
   &-navigation__item {
     margin-bottom: 30px;
+    text-align: center;
+  }
 
+  .active {
+    color: #fff;
+
+    span {
+      color: #fff;
+    }
   }
 
   &-logo {
     color: $c-dark-gray;
-    .active {
-      color: #fff;
 
-      span {
-        color: #fff;
-      }
-    }
     span {
       color: $c-dark-gray;
     }
