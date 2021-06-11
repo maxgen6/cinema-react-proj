@@ -1,0 +1,26 @@
+@import "src/styles/variables";
+
+.watch {
+  padding: 35px 0;
+  min-height: 95vh;
+  background: rgba($c-main-background, .98);
+
+  .container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  &-title {
+    font-size: 52px;
+    font-weight: bold;
+    color: $c-white;
+    margin-bottom: 30px;
+  }
+
+  &-content {
+    width: 100%;
+    min-height: 200px;
+    background: rgba($c-main-background, .7);
+    border-radius: 10px;
+  }
+}

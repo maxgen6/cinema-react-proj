@@ -105,7 +105,7 @@ export default function Slider() {
           onSlideChange={() => handlerDisabledBtn()}
           breakpoints={{
             992: {
-              slidesPerView: 1,
+              slidesPerView: 4,
               spaceBetween: 10
             }
           }}

@@ -12,7 +12,7 @@ export default function Sidebar() {
             <NavLink to="/"  className="sidebar-logo">IMDb</NavLink>
           </li>
           <li className="sidebar-navigation__item">
-            <NavLink to="/1" className="sidebar-logo">
+            <NavLink to="/watch" className="sidebar-logo">
               <span className="material-icons movie">movie</span>
             </NavLink>
           </li>

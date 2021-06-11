@@ -1,8 +1,10 @@
 import React,{ useState } from "react";
+import { Switch, Route } from 'react-router-dom'
+
 
 import { Context }  from "./context";
 import {Header, Sidebar} from "./components/common";
-import {Home} from "./pages";
+import {Home, Watch} from "./pages";
 import photo from "./img/hype-ru-1525010432-RkyRMrDIDLNgunw.jpeg";
 
 function App() {
@@ -23,7 +25,10 @@ function App() {
       <div className="wrapper">
         <div className="wrapper-content">
           <Header />
-          <Home />
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/watch" component={Watch}/>
+          </Switch>
         </div>
         <div className="wrapper-sidebar">
           <Sidebar />

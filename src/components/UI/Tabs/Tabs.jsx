@@ -2,15 +2,10 @@ import React from "react";
 
 import './Tabs.scss'
 
-export default function Tabs() {
+export default function Tabs({ handlerSelectTab }) {
 
   const handlerTabsSwitch = e => {
-    const allTabs = document.querySelectorAll('.tabs-item');
-    allTabs.forEach(item => item.classList.contains('tabs-item__active')
-      ? item.classList.remove('tabs-item__active')
-      : ''
-    )
-    e.target.classList.add('tabs-item__active')
+    handlerSelectTab(e.target.textContent.toLowerCase())
   }
 
   return (
