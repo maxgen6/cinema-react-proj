@@ -1,9 +1,6 @@
 import React from "react";
 
-import Promo from "../../ui/Promo/Promo";
-import Tabs from "../../ui/Tabs/Tabs";
-import Slider from "../../ui/Slider/Slider";
-import Cards from "../../ui/Cards/Cards";
+import {Cards, Promo, Slider, Tabs} from "../../ui";
 import './Home.scss'
 
 

@@ -1,9 +1,8 @@
 import React,{ useState } from "react";
 
 import { Context }  from "./context";
-import Header from "./components/common/Header/Header";
-import Sidebar from "./components/common/Sidebar/Sidebar";
-import Home from "./components/pages/Home/Home";
+import {Header, Sidebar} from "./components/common";
+import {Home} from "./components/pages";
 import photo from "./img/hype-ru-1525010432-RkyRMrDIDLNgunw.jpeg";
 
 function App() {

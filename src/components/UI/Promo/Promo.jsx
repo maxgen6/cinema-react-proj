@@ -1,4 +1,5 @@
 import React from "react";
+
 import './Promo.scss'
 import background from '../../../img/hype-ru-1525010432-RkyRMrDIDLNgunw.jpeg'
 

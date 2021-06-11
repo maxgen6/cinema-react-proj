@@ -1,7 +1,7 @@
 import React from "react";
 
+import {Sidebar} from "../../common";
 import './BurgerMenu.scss'
-import Sidebar from "../../common/Sidebar/Sidebar";
 
 export default function BurgerMenu() {
   return (

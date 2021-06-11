@@ -1,0 +1,5 @@
+export { default as BurgerMenu} from './BurgerMenu'
+export { default as Cards} from './Cards'
+export { default as Promo} from './Promo'
+export { default as Slider} from './Slider'
+export { default as Tabs} from './Tabs'
