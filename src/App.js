@@ -1,10 +1,10 @@
 import React,{ useState } from "react";
 
-import Header from "./components/Common/Header/Header";
-import Sidebar from "./components/Common/Sidebar/Sidebar";
-import Content from "./components/Common/Content/Content";
+import { Context }  from "./context";
+import Header from "./components/common/Header/Header";
+import Sidebar from "./components/common/Sidebar/Sidebar";
+import Home from "./components/pages/Home/Home";
 import photo from "./img/hype-ru-1525010432-RkyRMrDIDLNgunw.jpeg";
-import {Context} from "./context";
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
       <div className="wrapper">
         <div className="wrapper-content">
           <Header />
-          <Content />
+          <Home />
         </div>
         <div className="wrapper-sidebar">
           <Sidebar />

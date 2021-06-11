@@ -1,6 +1,7 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
+
+import { Context } from "../../../context";
 import './Cards.scss'
-import {Context} from "../../../context";
 
 
 export default function Cards({sidebar}) {
@@ -14,9 +15,6 @@ export default function Cards({sidebar}) {
           <img src={item.img} alt="img"/>
           <p className="card-item__title">{item.title}</p>
           <p className="card-item__genres">{item.genres} <span>{item.score}</span></p>
-          <div className="blur">
-            <span className="play"></span>
-          </div>
         </a>
       ))}
     </>

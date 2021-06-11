@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+
 import './Header.scss'
+import BurgerMenu from "../../ui/BurgerMenu/BurgerMenu";
+import classNames from "classnames";
 
 export default function Header() {
+
+  const [openBurger, setOpenBurger] = useState(false)
+
+  const handlerShowMenu = () => setOpenBurger(!openBurger)
+
+  const liOpenBurgerClass = classNames({
+    "header-burger-menu header-burger-menu__active burger-menu__item": openBurger,
+    "header-burger-menu burger-menu__item": !openBurger,
+  })
+
   return (
     <header className="header">
       <ul className="header-list">
@@ -35,6 +48,13 @@ export default function Header() {
               </ul>
             </li>
           </ul>
+        </li>
+        <li className="burger-menu__action burger-menu__item">
+          <span className="burger-menu__action_open" onClick={handlerShowMenu}></span>
+        </li>
+        <li className={liOpenBurgerClass}>
+          <span className="burger-menu__action_close" onClick={handlerShowMenu}></span>
+          <BurgerMenu />
         </li>
       </ul>
     </header>

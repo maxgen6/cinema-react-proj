@@ -1,4 +1,4 @@
-@import "../../../variables/variables";
+@import "../../../styles/variables";
 
 .tabs {
   width: 50%;
@@ -16,6 +16,14 @@
     text-transform: uppercase;
     cursor: pointer;
     transition: .3s all;
+
+    @include _992 {
+      font-size: 14px;
+    }
+
+    @include _375 {
+      font-size: 12px;
+    }
 
     &:hover {
       color: $c-white;

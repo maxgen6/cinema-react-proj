@@ -1,4 +1,4 @@
-@import "../../../variables/variables";
+@import "../../../styles/variables";
 
 
 .sidebar {
@@ -10,6 +10,10 @@
   &-navigation__list {
     padding: 20px 15px;
     position: fixed;
+
+    @include _1024 {
+      padding: 20px 10px;
+    }
   }
 
   &-navigation__item {

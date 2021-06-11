@@ -1,7 +1,7 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import './Sidebar.scss'
-import {NavLink} from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -22,7 +22,7 @@ export default function Sidebar() {
             </NavLink>
           </li>
           <li className="sidebar-navigation__item">
-            <NavLink to="/3" className="sidebar-logo">
+            <NavLink to="/" exact className="sidebar-logo">
               <span className="material-icons sports">sports_esports</span>
             </NavLink>
           </li>

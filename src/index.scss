@@ -1,5 +1,7 @@
+@import "styles/variables";
+
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "RobotoRegular";
 }
 
 *,
@@ -63,10 +65,18 @@ select {
   &-content {
       flex-basis: 95%;
       order: 1;
+
+    @include _992 {
+      flex-basis: 100%;
+    }
   }
 
   &-sidebar {
     display: flex;
     flex-basis: 5%;
+
+    @include _992 {
+      display: none;
+    }
   }
 }

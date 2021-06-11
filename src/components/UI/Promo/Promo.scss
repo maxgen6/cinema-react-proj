@@ -1,4 +1,4 @@
-@import "../../../variables/variables";
+@import "../../../styles/variables";
 
 
 .promo {
@@ -29,6 +29,12 @@
     top: 40%;
     left: 55%;
     transform: translateY(-50%);
+
+    @include _992 {
+      width: 80%;
+      top: 50%;
+      left: 15%;
+    }
   }
 
   h1 {

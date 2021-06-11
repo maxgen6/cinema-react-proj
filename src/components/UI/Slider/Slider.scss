@@ -1,4 +1,4 @@
-@import "../../../variables/variables";
+@import "../../../styles/variables";
 
 .slider {
   padding-top: 20px;
@@ -52,7 +52,15 @@
     }
 
     @include _1024 {
-      max-width: 680px;
+      max-width: 665px;
+    }
+
+    @include _992 {
+      max-width: 435px;
+    }
+
+    @include _375 {
+      max-width: 335px;
     }
   }
 
@@ -60,6 +68,12 @@
     margin-right: 10px;
     width: 24%;
     flex: 1 0 24%;
-    transition: .5s all;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, .3);
+    transition: .3s all;
+
+    @include _992 {
+      flex: 1 0 49%;
+    }
   }
 }

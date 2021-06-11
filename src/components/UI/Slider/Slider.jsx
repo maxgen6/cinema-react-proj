@@ -1,17 +1,15 @@
 import React, {useState, useContext} from "react";
-import './Slider.scss'
-import Cards from "../Cards/Cards";
-import {Context} from "../../../context";
-
+import classNames from "classnames";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
+
+import { Context } from "../../../context";
+import './Slider.scss'
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -68,20 +66,32 @@ export default function Slider() {
   const handlerRightSlider = () => setDisabledBtnLeft(false)
   const handlerLeftSlider = () => setDisabledBtnRight(false)
 
+  const spanLeftArrowClass = classNames({
+    span: true,
+    'material-icons arrow-left disabled': disabledBtnLeft,
+    'material-icons arrow-left': !disabledBtnLeft
+  })
+
+  const spanRightArrowClass = classNames({
+    span: true,
+    'material-icons arrow-right disabled': disabledBtnRight,
+    'material-icons arrow-right': !disabledBtnRight
+  })
+
   return (
     <div className="slider">
       <div className="slider-header">
         <h4 className="slider-title">TV Series</h4>
-        <p className="slider-arrows">
+        <div className="slider-arrows">
           <span
-            className={disabledBtnLeft ? "material-icons arrow-left disabled" : "material-icons arrow-left"}
+            className={spanLeftArrowClass}
             onClick={handlerLeftSlider}
           >keyboard_arrow_left</span>
           <span
-            className={disabledBtnRight ? "material-icons arrow-right disabled" : "material-icons arrow-right"}
+            className={spanRightArrowClass}
             onClick={handlerRightSlider}
           >keyboard_arrow_right</span>
-        </p>
+        </div>
       </div>
       <div className="slider-block">
         <Swiper
@@ -93,17 +103,20 @@ export default function Slider() {
           }}
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => handlerDisabledBtn()}
+          breakpoints={{
+            992: {
+              slidesPerView: 1,
+              spaceBetween: 10
+            }
+          }}
         >
-            {cardInfo.map((item, index, arr) => (
-              <SwiperSlide className="card-item" key={item.id + index} tag="a" href="/#">
-                <img src={item.img} alt="img"/>
-                <p className="card-item__title">{item.title}</p>
-                <p className="card-item__genres">{item.genres} <span>{item.score}</span></p>
-                <div className="blur">
-                  <span className="play"></span>
-                </div>
-              </SwiperSlide>
-            ))}
+          {cardInfo.map((item, index, arr) => (
+            <SwiperSlide className="card-item" key={item.id + index} tag="a" href="/#">
+              <img src={item.img} alt="img"/>
+              <p className="card-item__title">{item.title}</p>
+              <p className="card-item__genres">{item.genres} <span>{item.score}</span></p>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>
