@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 
 import { Context }  from "./context";
 import {Header, Sidebar} from "./components/common";
-import {Home} from "./components/pages";
+import {Home} from "./pages";
 import photo from "./img/hype-ru-1525010432-RkyRMrDIDLNgunw.jpeg";
 
 function App() {
