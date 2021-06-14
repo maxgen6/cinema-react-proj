@@ -1,7 +1,8 @@
 import React from "react";
 
+import { AboutFilm, BigPromo } from "../../components/ui";
+import { Like, Friends } from "../../components/icons";
 import './Watch.scss'
-import {BigPromo} from "../../components/ui";
 
 export default function Watch() {
   return (
@@ -9,9 +10,30 @@ export default function Watch() {
       <div className="container">
         <h1 className="watch-title">Watch</h1>
 
-        <div className="watch-content">
+        <article className="watch-content">
           <BigPromo />
-        </div>
+
+          <div className="film-info">
+            <div className="film-info__header">
+              <h2>Once Upon a Time in Hollywood</h2>
+              <div className="button-block">
+                <span className="button-block__point">IMDb 7.7</span>
+                <button>
+                  <span>
+                    <Like />
+                  </span> Watch Later
+                </button>
+                <button>
+                  <span>
+                    <Friends />
+                  </span> Invite Friends
+                </button>
+              </div>
+            </div>
+            <AboutFilm />
+          </div>
+
+        </article>
       </div>
     </section>
   )

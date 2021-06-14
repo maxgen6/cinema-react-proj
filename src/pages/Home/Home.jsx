@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-import {Cards, Promo, Slider, Tabs} from "../../components/ui";
+import { Cards, Promo, Slider, Tabs } from "../../components/ui";
 import './Home.scss'
 
 

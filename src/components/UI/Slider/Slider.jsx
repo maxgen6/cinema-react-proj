@@ -101,7 +101,7 @@ export default function Slider() {
             nextEl: `.arrow-right`,
             prevEl: `.arrow-left`
           }}
-          onSwiper={(swiper) => console.log(swiper)}
+          onSwiper={(swiper) => true}
           onSlideChange={() => handlerDisabledBtn()}
           breakpoints={{
             992: {
