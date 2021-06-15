@@ -1,39 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Cards, Promo, Slider, Tabs } from "../../components/ui";
 import './Home.scss'
 
 
+
 export default function Home() {
 
-  const [shawTabContent, setShawTabContent] = useState('recomended')
-
-  const handlerSelectTab = item => setShawTabContent(item)
-
-
-  const shawTabs = () => {
-    switch (shawTabContent) {
-      case 'top rated(100)':
-        return (<div style={{color: "white"}}>top rated(100)</div>);
-      case 'most popular':
-        return (<div style={{color: "white"}}>most popular</div>);
-      case 'recomended':
-        return (<Slider />);
-      case 'imd tv':
-        return (<div style={{color: "white"}}>imd tv</div>);
-      break;
+  const tabContent= [
+    {
+      title: 'tab 1',
+      content: <div style={{color: "white"}}>tab 1</div>
+    },
+    {
+      title: 'tab 2',
+      content: <div style={{color: "white"}}>tab 2</div>
+    },
+    {
+      title: 'tab 3',
+      content: <Slider />
+    },
+    {
+      title: 'tab 4',
+      content: <div style={{color: "white"}}>tab 4</div>
     }
-  }
+  ]
 
   return (
     <section className="content">
       <article className="content-main">
         <Promo />
         <div className="content-main__block">
-          <Tabs handlerSelectTab={handlerSelectTab} />
-          {shawTabs()}
-          <Tabs handlerSelectTab={handlerSelectTab} />
-          {shawTabs()}
+          <Tabs
+            content={tabContent}
+          />
+        </div>
+        <div className="content-main__block">
+          <Tabs
+            content={tabContent}
+          />
         </div>
       </article>
       <article className="content-sidebar">

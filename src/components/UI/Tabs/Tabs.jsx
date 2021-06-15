@@ -1,25 +1,41 @@
-import React, {useRef} from "react";
+import React, { useState } from "react";
+import cl from 'classnames'
 
 import './Tabs.scss'
 
-export default function Tabs({ handlerSelectTab }) {
+export default function Tabs({
+    content
+  }) {
 
-  let tabRef = useRef()
+  const [activeTab, setActiveTab] = useState(0)
+  //
+  // let tabRef = useRef()
+  //
+  // const handlerTabsSwitch = e => {
+  //   const activeClass = 'tabs-item__active'
+  //   const allTabs = tabRef.current.querySelectorAll('.tabs-item')
+  //   handlerSelectTab(e.target.textContent.toLowerCase())
+  //   allTabs.forEach(item => item.classList.remove(activeClass))
+  //   e.target.classList.add(activeClass)
+  // }
 
-  const handlerTabsSwitch = e => {
-    const activeClass = 'tabs-item__active'
-    const allTabs = tabRef.current.querySelectorAll('.tabs-item')
-    handlerSelectTab(e.target.textContent.toLowerCase())
-    allTabs.forEach(item => item.classList.remove(activeClass))
-    e.target.classList.add(activeClass)
-  }
+  const Content = () => content[activeTab].content
 
   return (
-    <div className="tabs" ref={tabRef} >
-      <span className="tabs-item" onClick={handlerTabsSwitch}>top rated(100)</span>
-      <span className="tabs-item" onClick={handlerTabsSwitch}>most popular</span>
-      <span className="tabs-item tabs-item__active" onClick={handlerTabsSwitch}>recomended</span>
-      <span className="tabs-item" onClick={handlerTabsSwitch}>imd tv</span>
-    </div>
+    <>
+      <div className="tabs"  >
+        {content.map((item, key) => (
+          <span
+            key={key}
+            className={cl({
+              "tabs__item": true,
+              "tabs__item--active": key === activeTab
+            })}
+            onClick={() => setActiveTab(key)}
+          >{item.title}</span>
+        ))}
+      </div>
+      <Content />
+    </>
   )
 }
