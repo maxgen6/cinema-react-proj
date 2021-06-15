@@ -56,7 +56,15 @@
     }
 
     @include _992 {
-      max-width: 435px;
+      max-width: 955px;
+    }
+
+    @include _768 {
+      max-width: 720px;
+    }
+
+    @include _480 {
+      max-width: 370px;
     }
 
     @include _375 {

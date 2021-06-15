@@ -32,6 +32,8 @@ export default function Home() {
         <div className="content-main__block">
           <Tabs handlerSelectTab={handlerSelectTab} />
           {shawTabs()}
+          <Tabs handlerSelectTab={handlerSelectTab} />
+          {shawTabs()}
         </div>
       </article>
       <article className="content-sidebar">

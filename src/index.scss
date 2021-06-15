@@ -73,7 +73,7 @@ select {
 
   &-sidebar {
     display: flex;
-    flex-basis: 5%;
+    flex-basis: 80px;
 
     @include _992 {
       display: none;

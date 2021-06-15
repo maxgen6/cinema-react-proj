@@ -8,7 +8,10 @@ export default function Header() {
 
   const [openBurger, setOpenBurger] = useState(false)
 
-  const handlerShowMenu = () => setOpenBurger(!openBurger)
+  const handlerShowMenu = () => {
+    setOpenBurger(!openBurger)
+    return !openBurger ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto'
+  }
 
   const liOpenBurgerClass = classNames({
     "header-burger-menu header-burger-menu__active burger-menu__item": openBurger,
