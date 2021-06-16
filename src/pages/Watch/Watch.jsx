@@ -1,23 +1,27 @@
-import React from "react";
+import React, {useContext} from "react";
 
 import { AboutFilm, BigPromo } from "../../components/ui";
 import { Like, Friends } from "../../components/icons";
 import './Watch.scss'
+import {Context} from "../../context";
 
 export default function Watch() {
+
+  const { movie } = useContext(Context)
+
   return (
     <section className="watch">
       <div className="container">
         <h1 className="watch-title">Watch</h1>
 
         <article className="watch-content">
-          <BigPromo />
+          <BigPromo backdrop={movie?.backdrop} />
 
           <div className="film-info">
             <div className="film-info__header">
-              <h2>Once Upon a Time in Hollywood</h2>
+              <h2>{movie?.title}</h2>
               <div className="button-block">
-                <span className="button-block__point">IMDb 7.7</span>
+                <span className="button-block__point">IMDb {movie?.imdb_rating}</span>
                 <button>
                   <span>
                     <Like />
@@ -30,7 +34,7 @@ export default function Watch() {
                 </button>
               </div>
             </div>
-            <AboutFilm />
+            <AboutFilm movie={movie} />
           </div>
 
         </article>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Switch, Route } from 'react-router-dom'
 
-import {get} from "./services/api/movies";
+import {get, getById} from "./services/api/movies";
 import { Context }  from "./context";
 import {Header, Sidebar} from "./components/common";
 import {Home, Watch} from "./pages";
@@ -20,6 +20,7 @@ function App() {
     {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'}
   ])
   const [allMovies, setAllMovies] = useState(null)
+  const [movie, setMovie] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,12 +31,21 @@ function App() {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getById('the-dark-knight-2008')
+      setMovie(res.data)
+    }
+
+    fetchData()
+  }, [])
 
 
   return (
     <Context.Provider value={{
       cardInfo,
-      allMovies
+      allMovies,
+      movie
     }}>
       <div className="wrapper">
         <div className="wrapper-content">

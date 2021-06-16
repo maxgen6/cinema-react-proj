@@ -45,7 +45,7 @@ export default function Slider() {
   //   handlerRunSlider()
   // }
 
-  const cardInfo = useContext(Context)
+  const {cardInfo} = useContext(Context)
 
   const [disabledBtnLeft, setDisabledBtnLeft] = useState(true)
   const [disabledBtnRight, setDisabledBtnRight] = useState(false)
