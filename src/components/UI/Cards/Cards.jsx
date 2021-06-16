@@ -6,7 +6,7 @@ import './Cards.scss'
 
 export default function Cards({sidebar}) {
 
-  const cardInfo = useContext(Context)
+  const {cardInfo} = useContext(Context)
 
   return (
     <>

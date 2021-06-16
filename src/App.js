@@ -1,7 +1,7 @@
-import React,{ useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Switch, Route } from 'react-router-dom'
 
-
+import {get} from "./services/api/movies";
 import { Context }  from "./context";
 import {Header, Sidebar} from "./components/common";
 import {Home, Watch} from "./pages";
@@ -19,9 +19,24 @@ function App() {
     {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'},
     {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'}
   ])
+  const [allMovies, setAllMovies] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await get()
+      setAllMovies(res.data)
+    }
+
+    fetchData()
+  }, [])
+
+
 
   return (
-    <Context.Provider value={cardInfo}>
+    <Context.Provider value={{
+      cardInfo,
+      allMovies
+    }}>
       <div className="wrapper">
         <div className="wrapper-content">
           <Header />

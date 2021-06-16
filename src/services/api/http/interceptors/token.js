@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const token = (instance) => {
   const JWTToken = localStorage.getItem('token') || 'Wookie2019'
 
