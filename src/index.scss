@@ -60,11 +60,10 @@ select {
 }
 
 .wrapper {
-  display: flex;
 
   &-content {
-      flex-basis: 95%;
-      order: 1;
+    padding-left: 70px;
+    order: 1;
 
     @include _992 {
       flex-basis: 100%;
@@ -72,8 +71,11 @@ select {
   }
 
   &-sidebar {
-    display: flex;
-    flex-basis: 80px;
+    width: 70px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
 
     @include _992 {
       display: none;

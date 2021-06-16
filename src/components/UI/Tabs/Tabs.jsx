@@ -8,16 +8,6 @@ export default function Tabs({
   }) {
 
   const [activeTab, setActiveTab] = useState(0)
-  //
-  // let tabRef = useRef()
-  //
-  // const handlerTabsSwitch = e => {
-  //   const activeClass = 'tabs-item__active'
-  //   const allTabs = tabRef.current.querySelectorAll('.tabs-item')
-  //   handlerSelectTab(e.target.textContent.toLowerCase())
-  //   allTabs.forEach(item => item.classList.remove(activeClass))
-  //   e.target.classList.add(activeClass)
-  // }
 
   const Content = () => content[activeTab].content
 

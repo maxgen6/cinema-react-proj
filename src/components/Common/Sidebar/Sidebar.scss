@@ -6,10 +6,10 @@
   flex-direction: column;
   flex: 1;
   background: $c-main-background;
+  min-height: 100vh;
 
   &-navigation__list {
     padding: 20px 15px;
-    position: fixed;
 
     @include _1024 {
       padding: 20px 10px;

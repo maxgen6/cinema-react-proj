@@ -7,7 +7,7 @@ import './Home.scss'
 
 export default function Home() {
 
-  const tabContent= [
+  const tabContent = [
     {
       title: 'tab 1',
       content: <div style={{color: "white"}}>tab 1</div>
