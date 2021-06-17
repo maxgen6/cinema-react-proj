@@ -1,13 +1,23 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 
 import { AboutFilm, BigPromo } from "../../components/ui";
 import { Like, Friends } from "../../components/icons";
 import './Watch.scss'
 import {Context} from "../../context";
+import {getById} from "../../services/api/movies";
 
 export default function Watch() {
 
-  const { movie } = useContext(Context)
+  const {  movieId } = useContext(Context)
+
+  const [movie, setMovie] = useState(null)
+
+  useEffect(() => fetchSpecialMovie(movieId), [])
+
+  const fetchSpecialMovie = async (id) => {
+    const res = await getById(id)
+    setMovie(res.data)
+  }
 
   return (
     <section className="watch">

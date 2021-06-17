@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, { useState } from "react";
 import {Link} from "react-router-dom";
 import classNames from "classnames";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -10,20 +10,15 @@ import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
-import { Context } from "../../../context";
 import './Slider.scss'
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 
-export default function Slider() {
 
-  const { allMovies, fetchSpecialMovie } = useContext(Context)
+export default function Slider({ genres, getFilmId }) {
 
-  const movies = allMovies?.movies
-
-  const [genres, setGenres] = useState([])
   const [disabledBtnLeft, setDisabledBtnLeft] = useState(true)
   const [disabledBtnRight, setDisabledBtnRight] = useState(false)
 
@@ -42,31 +37,6 @@ export default function Slider() {
 
   const handlerRightSlider = () => setDisabledBtnLeft(false)
   const handlerLeftSlider = () => setDisabledBtnRight(false)
-
-  const sortsGenres = () => {
-    const obj = {
-      action: [], crime: [], drama: [], animation: [], adventure: [], family: [], thriller: [], biography: [],
-      history: [], scifi: [], romance: [], war: [], mystery: []
-    }
-
-    movies?.map(item => {
-      for (let i = 0; i < item.genres.length; i++) {
-        item.genres[i] = item.genres[i].toLowerCase().replace(/-/g,"")
-         obj[`${item.genres[i]}`].push(item)
-      }
-      return obj
-    })
-
-    const genres = []
-    // for (let key in obj) {
-    //   let newObj = {}
-    //   newObj[`${key}`] = obj[key]
-    //   genres.push(newObj)
-    // }
-    genres.push(obj)
-    setGenres(genres)
-  }
-  useEffect(() => sortsGenres(), [allMovies])
 
   const spanLeftArrowClass = classNames({
     span: true,
@@ -119,10 +89,10 @@ export default function Slider() {
                     <SwiperSlide
                       className="card-item"
                       key={value.id + index}
-                      onClick={() => fetchSpecialMovie(value.slug)}
+                      onClick={() => getFilmId(value.slug)}
                     >
                       <Link
-                        to="/watch"
+                        to={`/${value.slug}`}
                       >
                         <img src={value.backdrop} alt="img"/>
                         <p className="card-item__title">{value.title}</p>
