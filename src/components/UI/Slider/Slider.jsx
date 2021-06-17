@@ -1,7 +1,9 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
+import {Link} from "react-router-dom";
 import classNames from "classnames";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
@@ -17,10 +19,9 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 export default function Slider() {
 
-  const { cardInfo, allMovies } = useContext(Context)
+  const { allMovies, fetchSpecialMovie } = useContext(Context)
 
   const movies = allMovies?.movies
-  console.log(movies)
 
   const [genres, setGenres] = useState([])
   const [disabledBtnLeft, setDisabledBtnLeft] = useState(true)
@@ -43,30 +44,35 @@ export default function Slider() {
   const handlerLeftSlider = () => setDisabledBtnRight(false)
 
   const sortsGenres = () => {
-    const genres = []
+    const obj = {
+      action: [], crime: [], drama: [], animation: [], adventure: [], family: [], thriller: [], biography: [],
+      history: [], scifi: [], romance: [], war: [], mystery: []
+    }
+
     movies?.map(item => {
-      item.genres.map(value => {
-        switch (value) {
-          case 'Action':
-            // const action = {action: item}
-            genres.push(item)
-            console.log(genres)
-
-        }
-
-      })
+      for (let i = 0; i < item.genres.length; i++) {
+        item.genres[i] = item.genres[i].toLowerCase().replace(/-/g,"")
+         obj[`${item.genres[i]}`].push(item)
+      }
+      return obj
     })
+
+    const genres = []
+    // for (let key in obj) {
+    //   let newObj = {}
+    //   newObj[`${key}`] = obj[key]
+    //   genres.push(newObj)
+    // }
+    genres.push(obj)
+    setGenres(genres)
   }
-  sortsGenres()
-
-
+  useEffect(() => sortsGenres(), [allMovies])
 
   const spanLeftArrowClass = classNames({
     span: true,
     'material-icons arrow-left disabled': disabledBtnLeft,
     'material-icons arrow-left': !disabledBtnLeft
   })
-
   const spanRightArrowClass = classNames({
     span: true,
     'material-icons arrow-right disabled': disabledBtnRight,
@@ -74,46 +80,62 @@ export default function Slider() {
   })
 
   return (
-    <div className="slider">
-      <div className="slider-header">
-        <h4 className="slider-title">TV Series</h4>
-        <div className="slider-arrows">
-          <span
-            className={spanLeftArrowClass}
-            onClick={handlerLeftSlider}
-          >keyboard_arrow_left</span>
-          <span
-            className={spanRightArrowClass}
-            onClick={handlerRightSlider}
-          >keyboard_arrow_right</span>
-        </div>
-      </div>
-      <div className="slider-block">
-        <Swiper
-          spaceBetween={10}
-          slidesPerView={4}
-          navigation={{
-            nextEl: `.arrow-right`,
-            prevEl: `.arrow-left`
-          }}
-          onSwiper={(swiper) => true}
-          onSlideChange={() => handlerDisabledBtn()}
-          breakpoints={{
-            992: {
-              slidesPerView: 4,
-              spaceBetween: 10
-            }
-          }}
-        >
-          {cardInfo.map((item, index) => (
-            <SwiperSlide className="card-item" key={item.id + index} tag="a" href="/#">
-              <img src={item.img} alt="img"/>
-              <p className="card-item__title">{item.title}</p>
-              <p className="card-item__genres">{item.genres} <span>{item.score}</span></p>
-            </SwiperSlide>
+    <>
+      {genres?.map((item, index) => (
+        <>
+          {Object.values(item).map((val, index) => (
+            <div className="slider" key={index}>
+              <div className="slider-header">
+                <h4 className="slider-title">{Object.keys(item)[index]}</h4>
+                <div className="slider-arrows">
+                <span
+                  className={spanLeftArrowClass}
+                  onClick={handlerLeftSlider}
+                >keyboard_arrow_left</span>
+                  <span
+                    className={spanRightArrowClass}
+                    onClick={handlerRightSlider}
+                  >keyboard_arrow_right</span>
+                </div>
+              </div>
+              <div className="slider-block">
+                <Swiper
+                  spaceBetween={10}
+                  slidesPerView={4}
+                  navigation={{
+                    nextEl: `.arrow-right`,
+                    prevEl: `.arrow-left`
+                  }}
+                  onSwiper={(swiper) => true}
+                  onSlideChange={() => handlerDisabledBtn()}
+                  breakpoints={{
+                    992: {
+                      slidesPerView: 4,
+                      spaceBetween: 10
+                    }
+                  }}
+                >
+                  {Object.values(item)[index].map((value, index) => (
+                    <SwiperSlide
+                      className="card-item"
+                      key={value.id + index}
+                      onClick={() => fetchSpecialMovie(value.slug)}
+                    >
+                      <Link
+                        to="/watch"
+                      >
+                        <img src={value.backdrop} alt="img"/>
+                        <p className="card-item__title">{value.title}</p>
+                        <p className="card-item__genres">{value.genres.join(', ')} <span>{value.imdb_rating} / 10</span></p>
+                      </Link>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </div>
           ))}
-        </Swiper>
-      </div>
-    </div>
+        </>
+      ))}
+    </>
   )
 }

@@ -31,21 +31,20 @@ function App() {
     fetchData()
   }, [])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await getById('the-dark-knight-2008')
-      setMovie(res.data)
-    }
+  useEffect(() => fetchSpecialMovie(), [])
 
-    fetchData()
-  }, [])
+  const fetchSpecialMovie = async (id = 'the-dark-knight-2008') => {
+    const res = await getById(id)
+    setMovie(res.data)
+  }
 
 
   return (
     <Context.Provider value={{
       cardInfo,
       allMovies,
-      movie
+      movie,
+      fetchSpecialMovie
     }}>
       <div className="wrapper">
         <div className="wrapper-content">
