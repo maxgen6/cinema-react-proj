@@ -18,7 +18,7 @@ export default function Home() {
     },
     {
       title: 'tab 3',
-      content: <Slider />
+      content: <div style={{color: "white"}}>tab 3</div>
     },
     {
       title: 'tab 4',
@@ -34,11 +34,7 @@ export default function Home() {
           <Tabs
             content={tabContent}
           />
-        </div>
-        <div className="content-main__block">
-          <Tabs
-            content={tabContent}
-          />
+          <Slider />
         </div>
       </article>
       <article className="content-sidebar">

@@ -16,37 +16,13 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 
 export default function Slider() {
-  // const [counter, setCounter] = useState(1)
-  //
-  // const handlerRunSlider= () => {
-  //   const allSlides = document.querySelectorAll('.slider-block .card-item')
-  //
-  //   if (counter > allSlides.length - 1) {
-  //     setCounter(0)
-  //   } else if (counter < 0) {
-  //     setCounter(allSlides.length - 1)
-  //   }
-  //
-  //   allSlides.forEach((item, index) => {
-  //     item.style.transform = `translateX(${-(counter * 100)}%)`;
-  //   })
-  // }
-  //
-  // const handlerNextSlide = () => {
-  //
-  //   setCounter(counter + 1)
-  //   console.log('as', counter)
-  //   handlerRunSlider()
-  // }
-  //
-  // const handlerPrevSlide = () => {
-  //   setCounter(counter - 1)
-  //   console.log('wer', counter)
-  //   handlerRunSlider()
-  // }
 
-  const {cardInfo} = useContext(Context)
+  const { cardInfo, allMovies } = useContext(Context)
 
+  const movies = allMovies?.movies
+  console.log(movies)
+
+  const [genres, setGenres] = useState([])
   const [disabledBtnLeft, setDisabledBtnLeft] = useState(true)
   const [disabledBtnRight, setDisabledBtnRight] = useState(false)
 
@@ -65,6 +41,25 @@ export default function Slider() {
 
   const handlerRightSlider = () => setDisabledBtnLeft(false)
   const handlerLeftSlider = () => setDisabledBtnRight(false)
+
+  const sortsGenres = () => {
+    const genres = []
+    movies?.map(item => {
+      item.genres.map(value => {
+        switch (value) {
+          case 'Action':
+            // const action = {action: item}
+            genres.push(item)
+            console.log(genres)
+
+        }
+
+      })
+    })
+  }
+  sortsGenres()
+
+
 
   const spanLeftArrowClass = classNames({
     span: true,
@@ -110,7 +105,7 @@ export default function Slider() {
             }
           }}
         >
-          {cardInfo.map((item, index, arr) => (
+          {cardInfo.map((item, index) => (
             <SwiperSlide className="card-item" key={item.id + index} tag="a" href="/#">
               <img src={item.img} alt="img"/>
               <p className="card-item__title">{item.title}</p>

@@ -1,5 +1,5 @@
 const token = (instance) => {
-  const JWTToken = localStorage.getItem('token') || 'Wookie2019'
+  const JWTToken = 'Wookie2019'
 
   if (JWTToken) {
     instance.defaults.headers['Authorization'] = `Bearer ${JWTToken}`

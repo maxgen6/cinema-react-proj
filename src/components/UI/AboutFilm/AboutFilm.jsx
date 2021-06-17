@@ -1,7 +1,6 @@
 import React from "react";
 
 import avatar from '../../../img/756115367772455.jpeg'
-import poster from '../../../img/odnazhdy-v-gollivude-kakie-ochki-nosyat-zvezdy-vesternov.jpeg'
 import './AboutFilm.scss'
 import {Music, Star, View} from "../../icons";
 
