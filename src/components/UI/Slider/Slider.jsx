@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {Link} from "react-router-dom";
-import classNames from "classnames";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -17,7 +16,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 
 
-export default function Slider({ genres, getFilmId }) {
+export default function Slider({ genres }) {
 
   const [disabledBtnLeft, setDisabledBtnLeft] = useState(true)
   const [disabledBtnRight, setDisabledBtnRight] = useState(false)
@@ -38,19 +37,9 @@ export default function Slider({ genres, getFilmId }) {
   const handlerRightSlider = () => setDisabledBtnLeft(false)
   const handlerLeftSlider = () => setDisabledBtnRight(false)
 
-  const spanLeftArrowClass = classNames({
-    span: true,
-    'material-icons arrow-left disabled': disabledBtnLeft,
-    'material-icons arrow-left': !disabledBtnLeft
-  })
-  const spanRightArrowClass = classNames({
-    span: true,
-    'material-icons arrow-right disabled': disabledBtnRight,
-    'material-icons arrow-right': !disabledBtnRight
-  })
-
   return (
     <>
+
       {genres?.map((item, index) => (
         <>
           {Object.values(item).map((val, index) => (
@@ -59,11 +48,11 @@ export default function Slider({ genres, getFilmId }) {
                 <h4 className="slider-title">{Object.keys(item)[index]}</h4>
                 <div className="slider-arrows">
                 <span
-                  className={spanLeftArrowClass}
+                  className="material-icons arrow-left "
                   onClick={handlerLeftSlider}
                 >keyboard_arrow_left</span>
                   <span
-                    className={spanRightArrowClass}
+                    className="material-icons arrow-right"
                     onClick={handlerRightSlider}
                   >keyboard_arrow_right</span>
                 </div>
@@ -72,11 +61,8 @@ export default function Slider({ genres, getFilmId }) {
                 <Swiper
                   spaceBetween={10}
                   slidesPerView={4}
-                  navigation={{
-                    nextEl: `.arrow-right`,
-                    prevEl: `.arrow-left`
-                  }}
-                  onSwiper={(swiper) => true}
+                  navigation
+                  onSwiper={swiper => true}
                   onSlideChange={() => handlerDisabledBtn()}
                   breakpoints={{
                     992: {
@@ -89,7 +75,6 @@ export default function Slider({ genres, getFilmId }) {
                     <SwiperSlide
                       className="card-item"
                       key={value.id + index}
-                      onClick={() => getFilmId(value.slug)}
                     >
                       <Link
                         to={`/${value.slug}`}

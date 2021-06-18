@@ -1,22 +1,32 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useHistory } from 'react-router-dom'
 
 import { AboutFilm, BigPromo } from "../../components/ui";
 import { Like, Friends } from "../../components/icons";
 import './Watch.scss'
-import {Context} from "../../context";
 import {getById} from "../../services/api/movies";
 
 export default function Watch() {
 
-  const {  movieId } = useContext(Context)
+  const { slug } = useParams()
+  const history  = useHistory()
 
   const [movie, setMovie] = useState(null)
 
-  useEffect(() => fetchSpecialMovie(movieId), [])
+  useEffect(() => fetchSpecialMovie(slug), [])
 
-  const fetchSpecialMovie = async (id) => {
-    const res = await getById(id)
-    setMovie(res.data)
+  const fetchSpecialMovie = async (id ) => {
+    try {
+      const res = await getById(id)
+
+      if(res.data?.title) {
+        setMovie(res.data)
+      } else {
+        history.push('/')
+      }
+    } catch (e) {
+      history.push('/')
+    }
   }
 
   return (

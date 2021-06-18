@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import { Context }  from "./context";
-import {Header, Sidebar} from "./components/common";
+import {Header} from "./components/common";
+import {Sidebar} from "./components/ui";
 import {Home, Watch} from "./pages";
 import photo from "./img/hype-ru-1525010432-RkyRMrDIDLNgunw.jpeg";
 
@@ -18,23 +19,17 @@ function App() {
     {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'},
     {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'}
   ])
-  const [movieId, setMovieId] = useState('the-dark-knight-2008')
-
-  const getFilmId = id => setMovieId(id)
 
   return (
     <Context.Provider value={{
       cardInfo,
-      movieId,
-      getFilmId
     }}>
       <div className="wrapper">
         <div className="wrapper-content">
           <Header />
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path={`/${movieId}`} component={Watch}/>
-            <Redirect to="/" />
+            <Route path="/:slug" component={Watch}/>
           </Switch>
         </div>
         <div className="wrapper-sidebar">

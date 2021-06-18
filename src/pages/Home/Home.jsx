@@ -1,19 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Cards, Promo, Slider, Tabs } from "../../components/ui";
 import './Home.scss'
-import {Context} from "../../context";
 import {get} from "../../services/api/movies";
 
 
 
 export default function Home() {
 
-  const { getFilmId } = useContext(Context)
   const [allMovies, setAllMovies] = useState(null)
   const [genres, setGenres] = useState([])
 
   const movies = allMovies?.movies
+  let randomNumber = Math.floor(Math.random() * (movies?.length - 1));
 
   const tabContent = [
     {
@@ -34,13 +33,18 @@ export default function Home() {
     }
   ]
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
+    try {
       const res = await get()
       setAllMovies(res.data)
+    } catch (e) {
+      console.log(e)
     }
-    fetchData()
-  }, [])
+  }
+
+  useEffect(() => fetchData(), [])
+
+
 
   const sortsGenres = () => {
     const obj = {}
@@ -71,14 +75,13 @@ export default function Home() {
   return (
     <section className="content">
       <article className="content-main">
-        <Promo />
+        {randomNumber ? <Promo promo={movies[randomNumber]} /> : <Promo />}
         <div className="content-main__block">
           <Tabs
             content={tabContent}
           />
           <Slider
             genres={genres}
-            getFilmId={getFilmId}
           />
         </div>
       </article>

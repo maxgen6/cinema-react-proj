@@ -1,6 +1,7 @@
 @import "../../../styles/variables";
 
 .slider {
+  position: relative;
   padding-top: 20px;
 
   &-header {
@@ -71,18 +72,44 @@
     @include _375 {
       max-width: 335px;
     }
+
+    .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+      position: absolute;
+      right: 0;
+      top: 30px;
+      background: none;
+    }
+
+    .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+      position: absolute;
+      left: 96%;
+      right: auto;
+      top: 30px;
+      background: none;
+    }
+
+    .swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
+      background: $c-main-background;
+      opacity: .7;
+      cursor: not-allowed;
+    }
   }
 
   .card-item {
     margin-right: 10px;
-    width: 24%;
-    flex: 1 0 24%;
+    width: 24%!important;
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, .3);
     transition: .3s all;
 
     @include _992 {
-      flex: 1 0 49%;
+      width: 49%;
     }
   }
+
+  .swiper-container {
+    position: static;
+  }
+
+
 }

@@ -1,12 +1,10 @@
-import React, {useContext} from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 import './Sidebar.scss'
-import {Context} from "../../../context";
 
 export default function Sidebar() {
 
-  const { movieId } = useContext(Context)
 
   return (
     <section className="sidebar">
@@ -16,7 +14,7 @@ export default function Sidebar() {
             <NavLink to="/"  className="sidebar-logo">IMDb</NavLink>
           </li>
           <li className="sidebar-navigation__item">
-            <NavLink to={`/${movieId}`} className="sidebar-logo">
+            <NavLink to="/1" className="sidebar-logo">
               <span className="material-icons movie">movie</span>
             </NavLink>
           </li>
