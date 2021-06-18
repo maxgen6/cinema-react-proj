@@ -82,8 +82,8 @@
 
     .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
       position: absolute;
-      left: 96%;
-      right: auto;
+      left: auto;
+      right: 23px;
       top: 30px;
       background: none;
     }
@@ -103,7 +103,7 @@
     transition: .3s all;
 
     @include _992 {
-      width: 49%;
+      width: 49%!important;
     }
   }
 

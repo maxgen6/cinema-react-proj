@@ -18,28 +18,8 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 export default function Slider({ genres }) {
 
-  const [disabledBtnLeft, setDisabledBtnLeft] = useState(true)
-  const [disabledBtnRight, setDisabledBtnRight] = useState(false)
-
-  const handlerDisabledBtn = () => {
-    const slides = document.querySelectorAll('.swiper-slide')
-    setDisabledBtnLeft(false)
-
-    slides[slides.length - 5].classList.contains('swiper-slide-active')
-      ? setDisabledBtnRight(true)
-      : setDisabledBtnRight(false)
-
-    if (slides[1].classList.contains('swiper-slide-active')) {
-      setDisabledBtnLeft(true)
-    }
-  }
-
-  const handlerRightSlider = () => setDisabledBtnLeft(false)
-  const handlerLeftSlider = () => setDisabledBtnRight(false)
-
   return (
     <>
-
       {genres?.map((item, index) => (
         <>
           {Object.values(item).map((val, index) => (
@@ -49,25 +29,23 @@ export default function Slider({ genres }) {
                 <div className="slider-arrows">
                 <span
                   className="material-icons arrow-left "
-                  onClick={handlerLeftSlider}
                 >keyboard_arrow_left</span>
                   <span
                     className="material-icons arrow-right"
-                    onClick={handlerRightSlider}
                   >keyboard_arrow_right</span>
                 </div>
               </div>
               <div className="slider-block">
                 <Swiper
                   spaceBetween={10}
-                  slidesPerView={4}
+                  slidesPerView={2}
                   navigation
                   onSwiper={swiper => true}
-                  onSlideChange={() => handlerDisabledBtn()}
+                  onSlideChange={() => true}
                   breakpoints={{
                     992: {
-                      slidesPerView: 4,
-                      spaceBetween: 10
+                      slidesPerView: 'auto',
+                      spaceBetween: 8
                     }
                   }}
                 >
