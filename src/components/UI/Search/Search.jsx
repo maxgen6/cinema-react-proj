@@ -41,6 +41,7 @@ export default function Search() {
         cacheOptions
         loadOptions={loadOptions}
         defaultOptions
+        placehodler={'Search film ...'}
         onChange={e => handlerSelectedFilm(e?.label)}
       />
     </>
