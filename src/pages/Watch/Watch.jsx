@@ -13,9 +13,9 @@ export default function Watch() {
 
   const [movie, setMovie] = useState(null)
 
-  useEffect(() => fetchSpecialMovie(slug), [])
+  useEffect(() => fetchSpecialMovie(slug), [slug])
 
-  const fetchSpecialMovie = async (id ) => {
+  const fetchSpecialMovie = async (id) => {
     try {
       const res = await getById(id)
 

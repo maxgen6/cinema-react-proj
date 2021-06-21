@@ -25,7 +25,6 @@ function App() {
     <Context.Provider value={{
       cardInfo,
     }}>
-      {console.log('render')}
       <div className="wrapper">
         <div className="wrapper-content">
           <Header />
