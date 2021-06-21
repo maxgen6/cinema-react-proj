@@ -7,6 +7,7 @@ import {Sidebar} from "./components/ui";
 import {Home, Watch} from "./pages";
 import photo from "./img/hype-ru-1525010432-RkyRMrDIDLNgunw.jpeg";
 
+
 function App() {
 
   const [cardInfo] = useState([
@@ -24,6 +25,7 @@ function App() {
     <Context.Provider value={{
       cardInfo,
     }}>
+      {console.log('render')}
       <div className="wrapper">
         <div className="wrapper-content">
           <Header />

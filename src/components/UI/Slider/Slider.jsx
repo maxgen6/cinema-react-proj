@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -27,12 +27,8 @@ export default function Slider({ genres }) {
               <div className="slider-header">
                 <h4 className="slider-title">{Object.keys(item)[index]}</h4>
                 <div className="slider-arrows">
-                <span
-                  className="material-icons arrow-left "
-                >keyboard_arrow_left</span>
-                  <span
-                    className="material-icons arrow-right"
-                  >keyboard_arrow_right</span>
+                  <span className="material-icons arrow-left ">keyboard_arrow_left</span>
+                  <span className="material-icons arrow-right">keyboard_arrow_right</span>
                 </div>
               </div>
               <div className="slider-block">
@@ -52,7 +48,7 @@ export default function Slider({ genres }) {
                   {Object.values(item)[index].map((value, index) => (
                     <SwiperSlide
                       className="card-item"
-                      key={value.id + index}
+                      key={value.id}
                     >
                       <Link
                         to={`/${value.slug}`}

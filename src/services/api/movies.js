@@ -2,21 +2,23 @@ import http from './http'
 
 export const get = () => {
   return http({
-    url: '',
+    url: '/movies',
     method: 'GET',
   })
 }
 
 export const getById = id => {
   return http({
-    url: `/${id}`,
+    url: `/movies/${id}`,
     method: 'GET',
   })
 }
-
-export const searchById = id => {
+export const getMoviesSearch = query => {
   return http({
-    url: `?q=${id}`,
+    url: `/movies`,
     method: 'GET',
+    params: {
+      q: query,
+    },
   })
 }

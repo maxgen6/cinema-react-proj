@@ -8,7 +8,7 @@ import {
 } from './interceptors'
 
 const instance = axios.create({
-  baseURL: `https://wookie.codesubmit.io/movies`,
+  baseURL: `https://wookie.codesubmit.io`,
   headers: {
     'Content-Type': 'application/json'
   },

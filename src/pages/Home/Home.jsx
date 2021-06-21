@@ -38,13 +38,11 @@ export default function Home() {
       const res = await get()
       setAllMovies(res.data)
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
   useEffect(() => fetchData(), [])
-
-
 
   const sortsGenres = () => {
     const obj = {}

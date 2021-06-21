@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import './Header.scss'
 import BurgerMenu from "../../ui/BurgerMenu/BurgerMenu";
 import classNames from "classnames";
+import {Search} from "../../ui";
 
 export default function Header() {
 
@@ -22,8 +23,7 @@ export default function Header() {
     <header className="header">
       <ul className="header-list">
         <li className="header-list__item">
-          <input type="text" placeholder="Search movies, tv shows..." />
-          <span className="material-icons search"> search </span>
+          <Search />
         </li>
         <li className="header-list__item">
           <ul className="submenu-list">
