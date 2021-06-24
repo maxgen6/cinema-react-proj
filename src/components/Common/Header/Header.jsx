@@ -4,10 +4,12 @@ import './Header.scss'
 import BurgerMenu from "../../ui/BurgerMenu/BurgerMenu";
 import classNames from "classnames";
 import {Search} from "../../ui";
+import {SearchIcon} from "../../icons";
 
 export default function Header() {
 
   const [openBurger, setOpenBurger] = useState(false)
+  const [activeSearch, setActiveSearch] = useState(false)
 
   const handlerShowMenu = () => {
     setOpenBurger(!openBurger)
@@ -19,11 +21,24 @@ export default function Header() {
     "header-burger-menu burger-menu__item": !openBurger,
   })
 
+  const handlerSetSearchPanel = () => setActiveSearch(!activeSearch)
+  const closeSearchPanel = item => setActiveSearch(item)
+
+
   return (
     <header className="header">
       <ul className="header-list">
-        <li className="header-list__item">
-          <Search />
+        <li className="header-list__item" >
+          { activeSearch
+          ?
+            <>
+              <Search closeSearchPanel={closeSearchPanel}/>
+              <span className="close-search-panel" onClick={handlerSetSearchPanel}></span>
+            </>
+          : <span className="open-search-panel" onClick={handlerSetSearchPanel}>
+              <SearchIcon />
+            </span>
+          }
         </li>
         <li className="header-list__item">
           <ul className="submenu-list">
