@@ -13,7 +13,6 @@
     }
 
     &__item {
-      position: relative;
       display: flex;
       align-items: center;
       width: 50%;
@@ -32,15 +31,22 @@
         }
       }
 
-      div:first-of-type {
-        width: 500px;
+      .search-panel {
+        position: relative;
+      }
+
+      div:nth-child(1){
+        width: 100%;
+        max-width: 500px;
         font-size: 14px;
         outline: none;
         border: none;
         border-radius: 5px;
         color: $c-dark-gray;
 
+
         .css-26l3qy-menu {
+          max-width: 500px;
           width: 100%;
           overflow-x: hidden;
         }
@@ -70,10 +76,11 @@
 
       .close-search-panel {
         position: absolute;
-        display: block;
         width: 20px;
         height: 20px;
-        left: 75%;
+        right: -25px;
+        top: 50%;
+        transform: translateY(-50%);
         cursor: pointer;
         z-index: 25;
         &:before {
@@ -81,7 +88,7 @@
           display: block;
           position: absolute;
           top: 7px;
-          width: 100%;
+          width: 20px;
           height: 2px;
           background: $c-dark-gray;
           transform: rotate(45deg);
@@ -91,7 +98,7 @@
           display: block;
           position: absolute;
           top: 7px;
-          width: 100%;
+          width: 20px;
           height: 2px;
           background: $c-dark-gray;
           transform: rotate(-45deg);

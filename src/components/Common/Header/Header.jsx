@@ -31,10 +31,10 @@ export default function Header() {
         <li className="header-list__item" >
           { activeSearch
           ?
-            <>
+            <div className="search-panel">
               <Search closeSearchPanel={closeSearchPanel}/>
               <span className="close-search-panel" onClick={handlerSetSearchPanel}></span>
-            </>
+            </div>
           : <span className="open-search-panel" onClick={handlerSetSearchPanel}>
               <SearchIcon />
             </span>

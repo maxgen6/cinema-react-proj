@@ -5,7 +5,6 @@ import './Home.scss'
 import {get} from "../../services/api/movies";
 
 
-
 export default function Home() {
 
   const [allMovies, setAllMovies] = useState(null)
@@ -73,7 +72,7 @@ export default function Home() {
   return (
     <section className="content">
       <article className="content-main">
-        {randomNumber ? <Promo promo={movies[randomNumber]} /> : <Promo />}
+        <Promo promo={randomNumber ? movies[randomNumber] : null} />
         <div className="content-main__block">
           <Tabs
             content={tabContent}

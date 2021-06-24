@@ -1,11 +1,12 @@
 import React from "react";
 
-export default function Star() {
+export default function Star({ fill }) {
   return (
 
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 325.505 325.505"
+      fill={fill ? fill : "#fff"}
     >
       <g>
         <g>

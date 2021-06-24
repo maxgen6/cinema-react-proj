@@ -4,7 +4,64 @@ import avatar from '../../../img/756115367772455.jpeg'
 import './AboutFilm.scss'
 import {Music, Star, View} from "../../icons";
 
-export default function AboutFilm({ movie }) {
+export default function AboutFilm({movie}) {
+
+  const renderRating = () => {
+    const rating = Math.round(Math.floor(+movie?.imdb_rating) / 2)
+    switch (rating) {
+        case 5:
+          return (
+            <>
+              <Star style={{fill: "#fff"}}/>
+              <Star fill="#fff"/>
+              <Star fill="#fff"/>
+              <Star fill="#fff"/>
+              <Star fill="#fff"/>
+            </>
+          )
+        case 4:
+          return (
+            <>
+              <Star fill="#fff"/>
+              <Star fill="#fff"/>
+              <Star fill="#fff"/>
+              <Star fill="#fff"/>
+              <Star fill="#808080"/>
+            </>
+          )
+        case 3:
+          return (
+            <>
+              <Star fill="#fff"/>
+              <Star fill="#fff"/>
+              <Star fill="#fff"/>
+              <Star fill="#808080"/>
+              <Star fill="#808080"/>
+            </>
+          )
+        case 2:
+          return (
+            <>
+              <Star fill="#fff"/>
+              <Star fill="#fff"/>
+              <Star fill="#808080"/>
+              <Star fill="#808080"/>
+              <Star fill="#808080"/>
+            </>
+          )
+        case 1:
+          return (
+            <>
+              <Star fill="#fff"/>
+              <Star fill="#808080"/>
+              <Star fill="#808080"/>
+              <Star fill="#808080"/>
+              <Star fill="#808080"/>
+            </>
+          )
+      }
+  }
+
 
   return (
     <div className="about-film">
@@ -17,14 +74,10 @@ export default function AboutFilm({ movie }) {
           <p className="film-description">{movie?.overview}</p>
           <div className="film-rating">
             <p className="view">
-              <View /> 334,503
+              <View/> 334,503
             </p>
             <div className="star">
-              <Star />
-              <Star />
-              <Star />
-              <Star />
-              <Star />
+              { renderRating() }
             </div>
             <p className="information">
               {movie?.classification} | {movie?.length} | {movie?.genres.join(', ')} | {movie?.released_on}
@@ -36,7 +89,7 @@ export default function AboutFilm({ movie }) {
               <ul>
                 <li>Director: <span>{movie?.director}</span></li>
                 <li>Writers: <span>{movie?.director}</span></li>
-                <li>Country: <span>USA | UK | China</span> </li>
+                <li>Country: <span>USA | UK | China</span></li>
                 <li>Language: <span>English</span></li>
               </ul>
             </div>
@@ -60,7 +113,7 @@ export default function AboutFilm({ movie }) {
             <div className="gallery-trailer__blur">Trailer</div>
           </a>
           <a href="/#" className="soundtracks">
-            <Music />
+            <Music/>
             <span>Soundtracks</span>
           </a>
         </div>
