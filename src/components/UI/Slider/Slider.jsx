@@ -21,7 +21,7 @@ export default function Slider({ genres }) {
   return (
     <>
       {genres?.map((item, index) => (
-        <>
+        <div key={Date.now() + index}>
           {Object.values(item).map((val, index) => (
             <div className="slider" key={index}>
               <div className="slider-header">
@@ -63,7 +63,7 @@ export default function Slider({ genres }) {
               </div>
             </div>
           ))}
-        </>
+        </div>
       ))}
     </>
   )

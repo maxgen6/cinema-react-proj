@@ -15,7 +15,7 @@ export default function Promo({ promo }) {
         <p className="promo-description">{promo?.overview}</p>
         <div className="promo-actions">
           <Link to={`/${promo?.slug}`}>Learn More</Link>
-          <span> <span className="material-icons play">play_circle_filled</span> Play Trailer</span>
+            <span> <span className="material-icons play">play_circle_filled</span> Play Trailer</span>
         </div>
       </div>
     </div>

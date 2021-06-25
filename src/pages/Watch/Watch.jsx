@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from 'react-router-dom'
 
+import { getById } from "../../services/api/movies";
 import { AboutFilm, BigPromo } from "../../components/ui";
 import { Like, Friends } from "../../components/icons";
 import './Watch.scss'
-import {getById} from "../../services/api/movies";
 
 export default function Watch() {
 
@@ -56,9 +56,9 @@ export default function Watch() {
             </div>
             <AboutFilm movie={movie} />
           </div>
-
         </article>
       </div>
+
     </section>
   )
 }

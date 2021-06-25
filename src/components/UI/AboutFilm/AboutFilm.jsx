@@ -3,63 +3,21 @@ import React from "react";
 import avatar from '../../../img/756115367772455.jpeg'
 import './AboutFilm.scss'
 import {Music, Star, View} from "../../icons";
+import {Modal} from "../index";
 
-export default function AboutFilm({movie}) {
+export default function AboutFilm({ movie }) {
 
   const renderRating = () => {
     const rating = Math.round(Math.floor(+movie?.imdb_rating) / 2)
-    switch (rating) {
-        case 5:
-          return (
-            <>
-              <Star style={{fill: "#fff"}}/>
-              <Star fill="#fff"/>
-              <Star fill="#fff"/>
-              <Star fill="#fff"/>
-              <Star fill="#fff"/>
-            </>
-          )
-        case 4:
-          return (
-            <>
-              <Star fill="#fff"/>
-              <Star fill="#fff"/>
-              <Star fill="#fff"/>
-              <Star fill="#fff"/>
-              <Star fill="#808080"/>
-            </>
-          )
-        case 3:
-          return (
-            <>
-              <Star fill="#fff"/>
-              <Star fill="#fff"/>
-              <Star fill="#fff"/>
-              <Star fill="#808080"/>
-              <Star fill="#808080"/>
-            </>
-          )
-        case 2:
-          return (
-            <>
-              <Star fill="#fff"/>
-              <Star fill="#fff"/>
-              <Star fill="#808080"/>
-              <Star fill="#808080"/>
-              <Star fill="#808080"/>
-            </>
-          )
-        case 1:
-          return (
-            <>
-              <Star fill="#fff"/>
-              <Star fill="#808080"/>
-              <Star fill="#808080"/>
-              <Star fill="#808080"/>
-              <Star fill="#808080"/>
-            </>
-          )
-      }
+    const arrStar = [<Star fill="#808080"/>, <Star fill="#808080"/>, <Star fill="#808080"/>, <Star fill="#808080"/>, <Star fill="#808080"/>]
+    for (let i = 0; i < rating; i++) {
+      arrStar[i] = {...arrStar[i],  props: {fill: '#fff'}}
+    }
+    return arrStar.map((item, key) => (
+      <p key={key + Date.now()}>
+        {item}
+      </p>
+    ))
   }
 
 
@@ -108,10 +66,15 @@ export default function AboutFilm({movie}) {
         </div>
         <div className="about-film__gallery">
           <h2>Gallery</h2>
-          <a href="/#" className="gallery-trailer">
-            <img src={movie?.poster} alt="poster"/>
-            <div className="gallery-trailer__blur">Trailer</div>
-          </a>
+          <Modal
+            trigger={
+              <div className="gallery-trailer">
+                <img src={movie?.poster} alt="poster"/>
+                <div className="gallery-trailer__blur">Trailer</div>
+              </div>
+            }
+            children={movie?.poster}
+          />
           <a href="/#" className="soundtracks">
             <Music/>
             <span>Soundtracks</span>

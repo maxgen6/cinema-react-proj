@@ -6,7 +6,7 @@ export default function Star({ fill }) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 325.505 325.505"
-      fill={fill ? fill : "#fff"}
+      fill={fill}
     >
       <g>
         <g>
