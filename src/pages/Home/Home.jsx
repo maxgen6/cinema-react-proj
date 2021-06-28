@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
+import {useDispatch, useSelector} from "react-redux";
 
 import { Cards, Promo, Slider, Tabs } from "../../components/ui";
 import './Home.scss'
-import {get} from "../../services/api/movies";
+import {fetchMovies} from "../../store/actions/movies";
 
 
 export default function Home() {
 
-  const [allMovies, setAllMovies] = useState(null)
   const [genres, setGenres] = useState([])
+  const dispatch = useDispatch()
+  const selector = useSelector(state => state.movies.movies)
 
-  const movies = allMovies?.movies
+  const movies = selector?.movies
   let randomNumber = Math.floor(Math.random() * (movies?.length - 1));
 
   const tabContent = [
@@ -32,20 +34,10 @@ export default function Home() {
     }
   ]
 
-  const fetchData = async () => {
-    try {
-      const res = await get()
-      setAllMovies(res.data)
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
-  useEffect(() => fetchData(), [])
+  useEffect(() => dispatch(fetchMovies()), [])
 
   const sortsGenres = () => {
     const obj = {}
-
     let genresArr = []
 
     movies?.map(item => {
@@ -67,7 +59,7 @@ export default function Home() {
     setGenres(genres)
   }
 
-  useEffect(() => sortsGenres(), [allMovies])
+  useEffect(() => sortsGenres(), [selector])
 
   return (
     <section className="content">
