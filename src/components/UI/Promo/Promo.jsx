@@ -1,7 +1,8 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import './Promo.scss'
+import { Modal } from "../index";
 
 export default function Promo({ promo }) {
   return (
@@ -15,7 +16,12 @@ export default function Promo({ promo }) {
         <p className="promo-description">{promo?.overview}</p>
         <div className="promo-actions">
           <Link to={`/${promo?.slug}`}>Learn More</Link>
-            <span> <span className="material-icons play">play_circle_filled</span> Play Trailer</span>
+          <Modal
+            trigger={
+              <span> <span className="material-icons play">play_circle_filled</span> Play Trailer</span>
+            }
+            children='https://www.youtube.com/watch?v=MG-S05stTv8'
+          />
         </div>
       </div>
     </div>

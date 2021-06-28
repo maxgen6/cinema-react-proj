@@ -1,5 +1,6 @@
 import React from "react";
 import './Modal.scss'
+import { Player } from "../index";
 
 export default function Modal({ trigger, children }) {
 
@@ -23,7 +24,7 @@ export default function Modal({ trigger, children }) {
       <div className="modal">
         <div className="modal-content">
           <span className="modal-close" onClick={handlerCloseModal}></span>
-          <img src={children} alt="promo"/>
+          <Player url={children} />
         </div>
       </div>
     </>

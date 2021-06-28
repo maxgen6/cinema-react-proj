@@ -1,0 +1,15 @@
+@import "../../../styles/variables";
+
+.player-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; // 16:9
+}
+
+.player-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}

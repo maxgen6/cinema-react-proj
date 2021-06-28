@@ -2,8 +2,8 @@ import React from "react";
 
 import avatar from '../../../img/756115367772455.jpeg'
 import './AboutFilm.scss'
-import {Music, Star, View} from "../../icons";
-import {Modal} from "../index";
+import { Music, Star, View } from "../../icons";
+import { Modal } from "../index";
 
 export default function AboutFilm({ movie }) {
 
@@ -14,9 +14,9 @@ export default function AboutFilm({ movie }) {
       arrStar[i] = {...arrStar[i],  props: {fill: '#fff'}}
     }
     return arrStar.map((item, key) => (
-      <p key={key + Date.now()}>
+      <>
         {item}
-      </p>
+      </>
     ))
   }
 
@@ -73,7 +73,7 @@ export default function AboutFilm({ movie }) {
                 <div className="gallery-trailer__blur">Trailer</div>
               </div>
             }
-            children={movie?.poster}
+            children='https://www.youtube.com/watch?v=MG-S05stTv8'
           />
           <a href="/#" className="soundtracks">
             <Music/>

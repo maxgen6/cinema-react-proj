@@ -18,7 +18,7 @@ export default function BigPromo({ backdrop }) {
             </div>
           </div>
         }
-        children={backdrop}
+        children='https://www.youtube.com/watch?v=MG-S05stTv8'
       />
     </div>
   )
