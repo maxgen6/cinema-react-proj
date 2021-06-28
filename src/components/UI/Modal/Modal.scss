@@ -20,6 +20,7 @@
     left: 50%;
     border-radius: 5px;
     transform: translate(-50%, -50%);
+    z-index: 60;
 
     @include _1024 {
       width: 80%;
@@ -59,7 +60,7 @@
     object-fit: cover;
   }
 
-  &-active {
+  &_active {
     display: block;
   }
 

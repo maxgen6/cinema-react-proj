@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import cl from "classnames";
 
 import './Modal.scss'
-import { Player } from "../index";
 
 export default function Modal({ trigger, children }) {
 
@@ -17,19 +16,17 @@ export default function Modal({ trigger, children }) {
     document.body.style.overflow = 'auto'
   }
 
-  document.addEventListener('click', e => {
-    e.target.classList.contains('modal-active') && handlerCloseModal()
-  })
-
-  const modalClassnames = cl({
-    "modal": !openModal,
-    "modal modal-active": openModal
-  })
+  // document.addEventListener('click', e => {
+  //   e.target.classList.contains('modal-active') && handlerCloseModal()
+  // })
 
   return (
     <>
       <div className="trigger" onClick={handlerOpenModal}>{trigger}</div>
-      <div className={modalClassnames}>
+      <div className={cl({
+        "modal": true,
+        "modal_active": openModal
+      })} onClick={handlerCloseModal}>
         <div className="modal-content">
           <span className="modal-close" onClick={handlerCloseModal}></span>
           {children}
