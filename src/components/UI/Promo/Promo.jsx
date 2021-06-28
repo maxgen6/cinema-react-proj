@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import './Promo.scss'
-import { Modal } from "../index";
+import {Modal, Player} from "../index";
 
 export default function Promo({ promo }) {
   return (
@@ -20,7 +20,7 @@ export default function Promo({ promo }) {
             trigger={
               <span> <span className="material-icons play">play_circle_filled</span> Play Trailer</span>
             }
-            children='https://www.youtube.com/watch?v=MG-S05stTv8'
+            children={<Player url={'https://www.youtube.com/watch?v=MG-S05stTv8'} />}
           />
         </div>
       </div>

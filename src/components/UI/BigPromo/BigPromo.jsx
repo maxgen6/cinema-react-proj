@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Modal } from "../index";
+import {Modal, Player} from "../index";
 import './BigPromo.scss'
 
 export default function BigPromo({ backdrop }) {
@@ -18,7 +18,7 @@ export default function BigPromo({ backdrop }) {
             </div>
           </div>
         }
-        children='https://www.youtube.com/watch?v=MG-S05stTv8'
+        children={<Player url={'https://www.youtube.com/watch?v=MG-S05stTv8'} />}
       />
     </div>
   )

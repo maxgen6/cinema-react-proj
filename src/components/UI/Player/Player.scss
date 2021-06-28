@@ -3,7 +3,7 @@
 .player-container {
   position: relative;
   height: 0;
-  padding-top: calc(100%/(16 / 9));
+  padding-bottom: 56.25%;
 
   > * {
     position: absolute;

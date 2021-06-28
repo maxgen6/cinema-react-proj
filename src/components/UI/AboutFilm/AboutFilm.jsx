@@ -3,7 +3,7 @@ import React from "react";
 import avatar from '../../../img/756115367772455.jpeg'
 import './AboutFilm.scss'
 import { Music, Star, View } from "../../icons";
-import { Modal } from "../index";
+import {Modal, Player} from "../index";
 
 export default function AboutFilm({ movie }) {
 
@@ -73,7 +73,7 @@ export default function AboutFilm({ movie }) {
                 <div className="gallery-trailer__blur">Trailer</div>
               </div>
             }
-            children='https://www.youtube.com/watch?v=MG-S05stTv8'
+            children={<Player url={'https://www.youtube.com/watch?v=MG-S05stTv8'} />}
           />
           <a href="/#" className="soundtracks">
             <Music/>
