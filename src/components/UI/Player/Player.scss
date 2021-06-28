@@ -2,9 +2,8 @@
 
 .player-container {
   position: relative;
-  --aspect-ratio: 16/9;
   height: 0;
-  padding-top: calc(100%/(var(--aspect-ratio)));
+  padding-top: calc(100%/(16 / 9));
 
   > * {
     position: absolute;
