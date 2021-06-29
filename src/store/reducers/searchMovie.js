@@ -5,7 +5,6 @@ const initialState = {
 }
 
 export default function searchMovieReducer(state = initialState, action) {
-  console.log('action', action.payload)
   switch (action.type) {
     case actionTypes.START_SEARCH_MOVIES:
       return {

@@ -1,10 +1,9 @@
-import React, {useEffect, useMemo, useState} from "react";
-import AsyncSelect from 'react-select/async'
+import React, { useMemo } from "react";
+import AsyncSelect from 'react-select'
 import { useHistory } from 'react-router-dom'
 import debounce from 'lodash.debounce'
 
 import './Search.scss'
-
 
 
 export default function Search({ closeSearchPanel, searchSpecialMovie, searchMovies }) {
@@ -30,35 +29,20 @@ export default function Search({ closeSearchPanel, searchSpecialMovie, searchMov
 
   const options = useMemo(
     () => {
-      movies.map(movie => ({value: movie.slug, label: (optionsLabel(movie)) }) )
+      return movies.map(movie => ({value: movie.slug, label: (optionsLabel(movie)) }) )
     },
     [movies],
   )
 
   const handleChange = (item) => {
-    history.push(`/${item.value}`) && closeSearchPanel()
+    history.push(`/${item.value}`)
+    return closeSearchPanel(false)
   }
 
   const loadOptions = debounce((value) => {
-    console.log(movies)
     searchSpecialMovie(value)
   }, 400)
 
-  // const loadOptions = debounce(async (inputText, callback) => {
-  //   try {
-  //     searchSpecialMovie(inputText)
-  //
-  //     if(callback) callback(movies.map(i => ({ label: (optionsLabel(i))})))
-  //
-  //     setInputText(inputText)
-  //   } catch (e) {
-  //     console.error(e)
-  //   }
-  // }, 500)
-
-
-
-  // useEffect(() => inputText && loadOptions(), [])
 
   const customStyles = {
     dropdownIndicator: base => ({
@@ -72,10 +56,6 @@ export default function Search({ closeSearchPanel, searchSpecialMovie, searchMov
     })
   }
 
-  // const handlerSelectedFilm = label => {
-  //   movies?.map(i => i.title === label.props.value ? history.push(`/${i.slug}`)  : null)
-  //   if(closeSearchPanel) closeSearchPanel(false)
-  // }
 
   return (
     <>
