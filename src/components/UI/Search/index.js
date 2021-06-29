@@ -5,13 +5,12 @@ import Search from "./Search";
 import * as actions from '../../../store/actions/searchMovie'
 
 const mapStateToProps = (state) => ({
-  movies: state.movie.movie
+  searchMovies: state.movies.movies
 })
-
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
-    searchMovie: actions.searchMovie
+    searchSpecialMovie: actions.searchSpecialMovie
   }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

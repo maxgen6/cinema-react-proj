@@ -2,12 +2,15 @@ import * as actionTypes from './actionTypes'
 import { getMoviesSearch } from "../../services/api/movies";
 
 
-export function searchMovie(params) {
+export function searchSpecialMovie(params) {
   return async (dispatch) => {
     try {
       dispatch(startSearchMovies)
       const res = await getMoviesSearch(params)
-      dispatch(successSearchMovie(res.data))
+      dispatch({
+        type: actionTypes.SUCCESS_SEARCH_MOVIES,
+        payload: res.data
+      })
     } catch (e) {
       dispatch(errorSearchMovies(e))
     }
@@ -21,12 +24,12 @@ export function startSearchMovies(movies) {
   }
 }
 
-export function successSearchMovie(movies) {
-  return {
-    type: actionTypes.SUCCESS_SEARCH_MOVIES,
-    payload: movies
-  }
-}
+// export function successSearchMovies(movies) {
+//   return {
+//     type: actionTypes.SUCCESS_SEARCH_MOVIES,
+//     payload: movies
+//   }
+// }
 
 export function errorSearchMovies(error) {
   return {

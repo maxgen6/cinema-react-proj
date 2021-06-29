@@ -3,22 +3,23 @@ import AsyncSelect from 'react-select/async'
 import { useHistory } from 'react-router-dom'
 import debounce from 'lodash.debounce'
 
-import { getMoviesSearch } from "../../../services/api/movies";
 import './Search.scss'
 
 
 
-export default function Search({ closeSearchPanel, searchMovie, movies }) {
+export default function Search({ closeSearchPanel, searchSpecialMovie, searchMovies }) {
 
   const history = useHistory()
 
   const [inputText, setInputText] = useState(null)
 
+  const { movies } = searchMovies
+
+  console.log(searchMovies)
+
   const loadOptions = debounce(async (inputText, callback) => {
     try {
-      searchMovie(inputText)
-
-      console.log(movies)
+      searchSpecialMovie(inputText)
 
       if(callback) callback(movies.map(i => ({ label: (optionsLabel(i))})))
 
@@ -32,7 +33,7 @@ export default function Search({ closeSearchPanel, searchMovie, movies }) {
     const { poster, title, imdb_rating, genres } = props
     return (
       <div className="dropdown-select" value={title}>
-        <img src={poster}  alt="poster"/>
+        <img src={poster}  alt="poster" />
         <div className="dropdown-select-description">
           <p className="title">{title}</p>
           <p className="info">

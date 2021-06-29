@@ -1,10 +1,11 @@
 import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
-  searchMovie: null
+  searchMovies: null
 }
 
 export default function searchMovieReducer(state = initialState, action) {
+  console.log('action', action.payload)
   switch (action.type) {
     case actionTypes.START_SEARCH_MOVIES:
       return {
@@ -13,7 +14,7 @@ export default function searchMovieReducer(state = initialState, action) {
     case actionTypes.SUCCESS_SEARCH_MOVIES:
       return {
         ...state,
-        movie: action.payload
+        searchMovies: action.payload
       }
     case actionTypes.ERROR_SEARCH_MOVIES:
       return {
