@@ -16,21 +16,22 @@ export function fetchMovies() {
 export function fetchStartMovies(movies) {
   return {
     type: actionTypes.FETCH_START,
-    movies
+    payload: movies
   }
 }
 
 export function fetchSuccessMovies(movies) {
   return {
-    type: actionTypes.FETCH_SUCCESS,
-    movies
+    type: actionTypes.FETCH_SUCCESS_GET_ALL_MOVIES,
+    payload: movies
   }
 }
 
 export function fetchErrorMovies(error) {
   return {
-    type: actionTypes.FETCH_ERROR_MOVIES,
-    error
+    type: actionTypes.FETCH_ERROR_GET_ALL_MOVIES,
+    payload: error
   }
 }
+
 

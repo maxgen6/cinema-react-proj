@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react";
-import {useDispatch, useSelector} from "react-redux";
 
 import { Cards, Promo, Slider, Tabs } from "../../components/ui";
 import './Home.scss'
-import {fetchMovies} from "../../store/actions/movies";
 
 
-export default function Home() {
+export default function Home({ fetchMovies, movies }) {
 
   const [genres, setGenres] = useState([])
-  const dispatch = useDispatch()
-  const selector = useSelector(state => state.movies.movies)
 
-  const movies = selector?.movies
-  let randomNumber = Math.floor(Math.random() * (movies?.length - 1));
+  const allMovies = movies?.movies
+  let randomNumber = Math.floor(Math.random() * (allMovies?.length - 1));
 
   const tabContent = [
     {
@@ -34,20 +30,20 @@ export default function Home() {
     }
   ]
 
-  useEffect(() => dispatch(fetchMovies()), [])
+  useEffect(() => fetchMovies(), [])
 
   const sortsGenres = () => {
     const obj = {}
     let genresArr = []
 
-    movies?.map(item => {
+    allMovies?.map(item => {
       item.genres.map(val => genresArr.push(val))
 
       genresArr = genresArr.reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], [])
       return genresArr.map(i => obj[`${i}`] = [])
     })
 
-    movies?.map(item => {
+    allMovies?.map(item => {
       for (let i = 0; i < item.genres.length; i++) {
         obj[`${item.genres[i]}`].push(item)
       }
@@ -59,12 +55,12 @@ export default function Home() {
     setGenres(genres)
   }
 
-  useEffect(() => sortsGenres(), [selector])
+  useEffect(() => sortsGenres(), [movies])
 
   return (
     <section className="content">
       <article className="content-main">
-        <Promo promo={randomNumber ? movies[randomNumber] : null} />
+        <Promo promo={randomNumber ? allMovies[randomNumber] : null} />
         <div className="content-main__block">
           <Tabs
             content={tabContent}

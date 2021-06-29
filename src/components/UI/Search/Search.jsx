@@ -8,21 +8,20 @@ import './Search.scss'
 
 
 
-export default function Search({ closeSearchPanel }) {
+export default function Search({ closeSearchPanel, searchMovie, movies }) {
 
   const history = useHistory()
 
   const [inputText, setInputText] = useState(null)
-  const [movies, setMovies] = useState(null)
 
   const loadOptions = debounce(async (inputText, callback) => {
     try {
-      const res = await getMoviesSearch(inputText)
-      const { movies } = res.data
+      searchMovie(inputText)
+
+      console.log(movies)
 
       if(callback) callback(movies.map(i => ({ label: (optionsLabel(i))})))
 
-      setMovies(movies)
       setInputText(inputText)
     } catch (e) {
       console.error(e)
