@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import AsyncSelect from 'react-select/async'
 import { useHistory } from 'react-router-dom'
 import debounce from 'lodash.debounce'
@@ -10,24 +10,8 @@ import './Search.scss'
 export default function Search({ closeSearchPanel, searchSpecialMovie, searchMovies }) {
 
   const history = useHistory()
-
-  const [inputText, setInputText] = useState(null)
-
   const { movies } = searchMovies
 
-  console.log(searchMovies)
-
-  const loadOptions = debounce(async (inputText, callback) => {
-    try {
-      searchSpecialMovie(inputText)
-
-      if(callback) callback(movies.map(i => ({ label: (optionsLabel(i))})))
-
-      setInputText(inputText)
-    } catch (e) {
-      console.error(e)
-    }
-  }, 500)
 
   const optionsLabel = props => {
     const { poster, title, imdb_rating, genres } = props
@@ -44,7 +28,37 @@ export default function Search({ closeSearchPanel, searchSpecialMovie, searchMov
     )
   }
 
-  useEffect(() => inputText && loadOptions(), [])
+  const options = useMemo(
+    () => {
+      movies.map(movie => ({value: movie.slug, label: (optionsLabel(movie)) }) )
+    },
+    [movies],
+  )
+
+  const handleChange = (item) => {
+    history.push(`/${item.value}`) && closeSearchPanel()
+  }
+
+  const loadOptions = debounce((value) => {
+    console.log(movies)
+    searchSpecialMovie(value)
+  }, 400)
+
+  // const loadOptions = debounce(async (inputText, callback) => {
+  //   try {
+  //     searchSpecialMovie(inputText)
+  //
+  //     if(callback) callback(movies.map(i => ({ label: (optionsLabel(i))})))
+  //
+  //     setInputText(inputText)
+  //   } catch (e) {
+  //     console.error(e)
+  //   }
+  // }, 500)
+
+
+
+  // useEffect(() => inputText && loadOptions(), [])
 
   const customStyles = {
     dropdownIndicator: base => ({
@@ -58,10 +72,10 @@ export default function Search({ closeSearchPanel, searchSpecialMovie, searchMov
     })
   }
 
-  const handlerSelectedFilm = label => {
-    movies?.map(i => i.title === label.props.value ? history.push(`/${i.slug}`)  : null)
-    if(closeSearchPanel) closeSearchPanel(false)
-  }
+  // const handlerSelectedFilm = label => {
+  //   movies?.map(i => i.title === label.props.value ? history.push(`/${i.slug}`)  : null)
+  //   if(closeSearchPanel) closeSearchPanel(false)
+  // }
 
   return (
     <>
@@ -69,10 +83,11 @@ export default function Search({ closeSearchPanel, searchSpecialMovie, searchMov
         isClearable
         cacheOptions
         loadOptions={loadOptions}
-        options={movies}
+        options={options}
         placehodler={'SearchIcon film ...'}
         styles={customStyles}
-        onChange={e => handlerSelectedFilm(e?.label)}
+        onChange={handleChange}
+        onInputChange={loadOptions}
       />
     </>
   )
