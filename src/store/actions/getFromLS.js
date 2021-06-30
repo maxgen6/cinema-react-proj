@@ -10,9 +10,8 @@ export function getFromLS() {
 export function setToLS(data) {
   return dispatch => {
     const lsData = JSON.parse(localStorage.getItem('movie')) || []
-    lsData.findIndex(c => c.id === data.id) < 0 && lsData.length < 10
-      ? lsData.push(data)
-      : lsData.splice(0, 1, data)
+    lsData.findIndex(c => c.id === data.id) < 0 && lsData.length < 10 &&  lsData.push(data)
+    lsData.length > 10 && lsData.splice(0, 1, data)
     localStorage.setItem('movie', JSON.stringify(lsData))
   }
 }

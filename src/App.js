@@ -12,11 +12,8 @@ import {Home, Watch} from "./pages";
 
 function App({ getFromLS, movieFromLS, setToLS, movie }) {
 
-
   useEffect(() => getFromLS(), [])
   useEffect(() => movie && setToLS(movie), [movie])
-
-  console.log(movieFromLS)
 
   return (
     <div className="wrapper">
