@@ -9,7 +9,7 @@ import './Search.scss'
 export default function Search({ closeSearchPanel, searchSpecialMovie, searchMovies }) {
 
   const history = useHistory()
-  const { movies } = searchMovies
+  const movies = searchMovies?.movies
 
 
   const optionsLabel = props => {
@@ -29,7 +29,7 @@ export default function Search({ closeSearchPanel, searchSpecialMovie, searchMov
 
   const options = useMemo(
     () => {
-      return movies.map(movie => ({value: movie.slug, label: (optionsLabel(movie)) }) )
+      return movies?.map(movie => ({value: movie.slug, label: (optionsLabel(movie)) }) )
     },
     [movies],
   )

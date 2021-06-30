@@ -27,6 +27,12 @@
     width: 25%;
     padding: 10px 15px;
 
+    .card-item {
+      img {
+        height: 150px;
+      }
+    }
+
     @include _992 {
       width: 100%;
       flex-basis: 100%;

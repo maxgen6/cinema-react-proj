@@ -5,12 +5,14 @@ import { AboutFilm, BigPromo } from "../../components/ui";
 import { Like, Friends } from "../../components/icons";
 import './Watch.scss'
 
-export default function Watch({ fetchSpecialMovie, movie  }) {
+export default function Watch({ fetchSpecialMovie, movie }) {
 
   const { slug } = useParams()
   const history  = useHistory()
 
+
   useEffect(() => fetchMovie(slug), [slug])
+
 
   const fetchMovie = async (id) => {
     try {

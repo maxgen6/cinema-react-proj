@@ -4,7 +4,7 @@ import { Cards, Promo, Slider, Tabs } from "../../components/ui";
 import './Home.scss'
 
 
-export default function Home({ fetchMovies, movies }) {
+export default function Home({ fetchMovies, movies, movieFromLS }) {
 
   const [genres, setGenres] = useState([])
 
@@ -76,7 +76,10 @@ export default function Home({ fetchMovies, movies }) {
           <a href="/#">Show more</a>
         </div>
         <div className="content-sidebar__block">
-          <Cards sidebar={true}/>
+          <Cards
+            sidebar={true}
+            movieFromLS={movieFromLS}
+          />
         </div>
       </article>
     </section>

@@ -1,44 +1,49 @@
-import React, { useState } from "react";
+import React, {useEffect} from "react";
 import { Switch, Route } from 'react-router-dom'
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import { Context }  from "./context";
+
+import * as actions from './store/actions/getFromLS'
 import {Header} from "./components/common";
 import {Sidebar} from "./components/ui";
 import {Home, Watch} from "./pages";
-import photo from "./img/hype-ru-1525010432-RkyRMrDIDLNgunw.jpeg";
 
 
-function App() {
+function App({ getFromLS, movieFromLS, setToLS, movie }) {
 
-  const [cardInfo] = useState([
-    {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'},
-    {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'},
-    {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'},
-    {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'},
-    {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'},
-    {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'},
-    {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'},
-    {id: Date.now(), img: `${photo}`, title: 'Game of Thrones', genres: 'action, adventure, drama', score: '9.4/10'}
-  ])
+
+  useEffect(() => getFromLS(), [])
+  useEffect(() => movie && setToLS(movie), [movie])
+
+  console.log(movieFromLS)
 
   return (
-    <Context.Provider value={{
-      cardInfo,
-    }}>
-      <div className="wrapper">
-        <div className="wrapper-content">
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/:slug" component={Watch}/>
-          </Switch>
-        </div>
-        <div className="wrapper-sidebar">
-          <Sidebar />
-        </div>
+    <div className="wrapper">
+      <div className="wrapper-content">
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/:slug" component={Watch}/>
+        </Switch>
       </div>
-    </Context.Provider>
+      <div className="wrapper-sidebar">
+        <Sidebar />
+      </div>
+    </div>
   );
 }
 
-export default App;
+
+const mapStateToProps = (state) => ({
+  movie: state.movie.movie,
+  movieFromLS: state.setLS.movieFromLS
+})
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({
+    getFromLS: actions.getFromLS,
+    setToLS: actions.setToLS
+  }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
