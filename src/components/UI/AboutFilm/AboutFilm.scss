@@ -54,7 +54,7 @@
       border-top: 1px solid $c-gray-span;
       border-bottom: 1px solid $c-gray-span;
 
-      @include _992 {
+      @include _480 {
         display: block;
       }
     }
@@ -86,6 +86,7 @@
       @include _992 {
         width: 45%;
         margin-bottom: 10px;
+        margin-left: 0;
       }
 
       svg {
@@ -164,6 +165,7 @@
     h2 {
       color: $c-white;
       margin-bottom: 5px;
+
     }
   }
 
@@ -200,7 +202,7 @@
         border-top: 10px solid transparent;
         border-left: 15px solid $c-white;
         border-bottom: 10px solid transparent;
-        left: 105px;
+        left: 35%;
       }
     }
   }

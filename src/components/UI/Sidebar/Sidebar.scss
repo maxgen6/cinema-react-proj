@@ -8,6 +8,10 @@
   background: $c-main-background;
   min-height: 100vh;
 
+  @include _992 {
+    background: none;
+  }
+
   &-navigation__list {
     padding: 20px 15px;
 
