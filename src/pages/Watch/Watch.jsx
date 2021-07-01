@@ -1,18 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from 'react-router-dom'
 
 import { AboutFilm, BigPromo } from "../../components/ui";
 import { Like, Friends } from "../../components/icons";
 import './Watch.scss'
 
-export default function Watch({ fetchSpecialMovie, movie }) {
+export default function Watch({ fetchSpecialMovie, movie, setToLS, setWatchLaterToLS, movieWatchLater  }) {
 
   const { slug } = useParams()
   const history  = useHistory()
 
+  const [buttonFill, setButtonFill] = useState(false)
 
   useEffect(() => fetchMovie(slug), [slug])
-
+  useEffect(() => movie && setToLS(movie), [movie])
 
   const fetchMovie = async (id) => {
     try {
@@ -21,6 +22,14 @@ export default function Watch({ fetchSpecialMovie, movie }) {
       history.push('/')
     }
   }
+
+  useEffect(() => movieWatchLater?.find(c => c.id === movie?.id) ? setButtonFill(true) : setButtonFill(false), [movie])
+
+  const setWatchLaterFilm = () => {
+    setButtonFill(!buttonFill)
+    setWatchLaterToLS(movie)
+  }
+
 
   return (
     <section className="watch">
@@ -35,9 +44,9 @@ export default function Watch({ fetchSpecialMovie, movie }) {
               <h2>{movie?.title}</h2>
               <div className="button-block">
                 <span className="button-block__point">IMDb {movie?.imdb_rating}</span>
-                <button>
+                <button onClick={setWatchLaterFilm}>
                   <span>
-                    <Like />
+                    <Like fill={buttonFill ? '#f31414' : '#fff'} />
                   </span> Watch Later
                 </button>
                 <button>

@@ -2,15 +2,18 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import Watch from "./Watch";
-import * as actions from '../../store/actions/movie'
+import movies from '../../store/actions/index'
 
 const mapStateToProps = (state) => ({
-  movie: state.movie.movie
+  movie: state.movies.movie,
+  movieWatchLater: state.movies.movieWatchLater
 })
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
-    fetchSpecialMovie: actions.fetchSpecialMovie
+    fetchSpecialMovie: movies.movies.fetchSpecialMovie,
+    setToLS: movies.movies.setToLS,
+    setWatchLaterToLS: movies.movies.setWatchLaterToLS
   }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Watch)

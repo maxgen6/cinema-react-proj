@@ -2,16 +2,16 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from "redux";
 
 import Home from "./Home";
-import * as actions from '../../store/actions/movies'
+import movies from '../../store/actions/index'
 
 const mapStateToProps = (state) => ({
   movies: state.movies.movies,
-  movieFromLS: state.setLS.movieFromLS
+  movieFromLS: state.movies.movieFromLS
 })
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
-    fetchMovies: actions.fetchMovies,
+    fetchMovies: movies.movies.fetchMovies,
   }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

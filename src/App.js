@@ -4,16 +4,15 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 
-import * as actions from './store/actions/getFromLS'
-import {Header} from "./components/common";
-import {Sidebar} from "./components/ui";
-import {Home, Watch} from "./pages";
+import movies from './store/actions/index'
+import { Header } from "./components/common";
+import { Sidebar } from "./components/ui";
+import { Home, Watch } from "./pages";
 
 
-function App({ getFromLS, movieFromLS, setToLS, movie }) {
+function App({ getFromLS }) {
 
   useEffect(() => getFromLS(), [])
-  useEffect(() => movie && setToLS(movie), [movie])
 
   return (
     <div className="wrapper">
@@ -33,14 +32,12 @@ function App({ getFromLS, movieFromLS, setToLS, movie }) {
 
 
 const mapStateToProps = (state) => ({
-  movie: state.movie.movie,
-  movieFromLS: state.setLS.movieFromLS
+  movie: state.movies.movie,
 })
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
-    getFromLS: actions.getFromLS,
-    setToLS: actions.setToLS
+    getFromLS: movies.movies.getFromLS
   }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
