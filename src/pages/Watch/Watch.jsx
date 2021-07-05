@@ -15,15 +15,9 @@ export default function Watch({ fetchSpecialMovie, movie, setToLS, setWatchLater
   useEffect(() => fetchMovie(slug), [slug])
   useEffect(() => movie && setToLS(movie), [movie])
 
-  const fetchMovie = async (id) => {
-    try {
-      fetchSpecialMovie(id)
-    } catch (e) {
-      history.push('/')
-    }
-  }
+  const fetchMovie = id => id ? fetchSpecialMovie(id) : history.push('/')
 
-  useEffect(() => movieWatchLater?.find(c => c.id === movie?.id) ? setButtonFill(true) : setButtonFill(false), [movie])
+  useEffect(() => setButtonFill(movieWatchLater?.find(c => c.id === movie?.id)), [movie])
 
   const setWatchLaterFilm = () => {
     setButtonFill(!buttonFill)

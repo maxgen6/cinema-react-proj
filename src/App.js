@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 
-import movies from './store/actions/index'
+import actions from './store/actions/index'
 import { Header } from "./components/common";
 import { Sidebar } from "./components/ui";
-import { Home, Watch } from "./pages";
+import { Home, Watch, WatchLater } from "./pages";
 
 
 function App({ getFromLS }) {
@@ -20,6 +20,7 @@ function App({ getFromLS }) {
         <Header />
         <Switch>
           <Route exact path="/" component={Home}/>
+          <Route path="/watch-later" component={WatchLater}/>
           <Route path="/:slug" component={Watch}/>
         </Switch>
       </div>
@@ -30,14 +31,9 @@ function App({ getFromLS }) {
   );
 }
 
-
-const mapStateToProps = (state) => ({
-  movie: state.movies.movie,
-})
-
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
-    getFromLS: movies.movies.getFromLS
+    getFromLS: actions.movies.getFromLS
   }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App)

@@ -12,7 +12,7 @@ export default function Sidebar() {
     {title: `sports_esports`,classname: 'sports', href: '/' },
     {title: `radio`,classname: 'radio', href: '/4' },
     {title: `emoji_events`,classname: 'cup', href: '/5' },
-    {title: `favorite`,classname: 'favorite', href: '/6' },
+    {title: `favorite`,classname: 'favorite', href: '/watch-later' },
     {title: `schedule`,classname: 'schedule', href: '/7' }
   ]
 

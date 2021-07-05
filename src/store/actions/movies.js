@@ -4,7 +4,6 @@ import { get, getById } from "../../services/api/movies";
 export function fetchMovies() {
   return async (dispatch) => {
     try {
-      dispatch(fetchStartMovies)
       const res = await get()
       dispatch({
         type: actionTypes.FETCH_SUCCESS_GET_ALL_MOVIES,
@@ -16,18 +15,9 @@ export function fetchMovies() {
   }
 }
 
-export function fetchStartMovies(movies) {
-  return {
-    type: actionTypes.FETCH_START,
-    payload: movies
-  }
-}
-
-
 export function fetchSpecialMovie(id) {
   return async (dispatch) => {
     try {
-      dispatch(fetchStartSpecialMovies)
       const res = await getById(id)
       dispatch({
         type: actionTypes.FETCH_SUCCESS_GET_SPECIAL_MOVIE,
@@ -36,13 +26,6 @@ export function fetchSpecialMovie(id) {
     } catch (e) {
       console.log('error: ', e)
     }
-  }
-}
-
-export function fetchStartSpecialMovies(movie) {
-  return {
-    type: actionTypes.FETCH_START_SPECIAL_MOVIE,
-    payload: movie
   }
 }
 
@@ -93,13 +76,10 @@ export function setWatchLaterToLS(data) {
         payload: filmsWatchLater
       })
     } else {
-      const idx = filmsWatchLater?.findIndex(c => c?.id === data?.id)
-      filmsWatchLater.splice(idx, 1)
-      localStorage.setItem('watchLater', JSON.stringify(filmsWatchLater))
-
+      localStorage.setItem('watchLater', JSON.stringify(filmsWatchLater.filter(c => c?.id !== data?.id)))
       dispatch({
         type: actionTypes.SUCCESS_GET_WATCH_LATER,
-        payload: filmsWatchLater
+        payload: filmsWatchLater.filter(c => c?.id !== data?.id)
       })
     }
   }
