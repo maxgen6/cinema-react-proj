@@ -1,5 +1,7 @@
 import * as movies from './movies'
 
-export default {
+const actions = {
   movies
 }
+
+export default actions

@@ -14,6 +14,7 @@ function App({ getFromLS }) {
 
   useEffect(() => getFromLS(), [])
 
+
   return (
     <div className="wrapper">
       <div className="wrapper-content">

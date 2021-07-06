@@ -30,7 +30,7 @@ export default function Home({ fetchMovies, movies, movieFromLS }) {
     }
   ]
 
-  useEffect(() => fetchMovies(), [])
+  useEffect(() => fetchMovies(), [fetchMovies])
 
   const sortsGenres = () => {
     const obj = {}
