@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import './Sidebar.scss'
 
-export default function Sidebar() {
+export default function Sidebar({ handlerShowMenu }) {
 
 
   const sidebarInfo = [
@@ -26,7 +26,7 @@ export default function Sidebar() {
           </li>
           {sidebarInfo.map((item, index) => (
             <li className="sidebar-navigation__item" key={index}>
-              <NavLink to={item.href} exact={item.href === '/'} className="sidebar-logo">
+              <NavLink to={item.href} exact={item.href === '/'} className="sidebar-logo" onClick={handlerShowMenu}>
                <span className={`material-icons ${item.classname}`}>{item.title}</span>
               </NavLink>
             </li>

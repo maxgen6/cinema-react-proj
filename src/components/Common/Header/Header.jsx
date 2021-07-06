@@ -72,7 +72,7 @@ export default function Header() {
         </li>
         <li className={liOpenBurgerClass}>
           <span className="burger-menu__action_close" onClick={handlerShowMenu}></span>
-          <BurgerMenu />
+          <BurgerMenu handlerShowMenu={handlerShowMenu} />
         </li>
       </ul>
     </header>
