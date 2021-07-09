@@ -134,6 +134,13 @@ export const HeaderListItem = styled.li`
     }
   }
 }
+
+${props => props._white && `color: red;`};
+
+${SubmenuList}{
+  
+}
+
 `
 
 export const SubmenuList = styled.ul`

@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <HeaderBlock >
       <HeaderList >
-        <HeaderListItem >
+        <HeaderListItem _white >
           { activeSearch
           ?
             <div className="search-panel">

@@ -2,6 +2,19 @@ import styled from "styled-components";
 
 import { Link } from 'react-router-dom'
 
+export const Card = styled.div`
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+  transition: .3s all;
+  z-index: 10;
+  overflow: hidden;
+`
+
+Card.Image = styled.img`
+  
+` // как по бэму, наследуется от Card
+
 
 export const LinkBlock = styled(Link)`
     position: relative;
