@@ -1,215 +1,18 @@
 @import "../../../styles/variables";
 
 .header {
-  padding: 15px 20px;
-  background: $c-main-background;
-  box-shadow: -7px 3px 17px -6px rgba(0, 0, 0, .3);
-
-  &-list {
-    display: flex;
-
-    @include _992 {
-      justify-content: flex-end;
-    }
-
-    &__item {
-      display: flex;
-      align-items: center;
-      width: 50%;
-
-      &:first-child {
-        height: 36px;
-      }
-
-      &:last-of-type {
-        justify-content: flex-end;
-      }
-
-      @include _992 {
-        &:first-child {
-          display: none;
-        }
-      }
-
-      .search-panel {
-        position: relative;
-        z-index: 90;
-      }
-
-      div:nth-child(1){
-        width: 100%;
-        max-width: 500px;
-        font-size: 14px;
-        outline: none;
-        border: none;
-        border-radius: 5px;
-        color: $c-dark-gray;
-
-
-        .css-26l3qy-menu {
-          max-width: 500px;
-          width: 100%;
-          overflow-x: hidden;
-        }
-      }
-
-      svg {
-        position: relative;
-        z-index: 55;
-        height: 25px;
-        fill: $c-dark-gray;
-        cursor: pointer;
-      }
-
-      .search {
-        display: block;
-        margin-left: -35px;
-        margin-top: 5px;
-        cursor: pointer;
-        color: $c-dark-gray;
-      }
-
-      .open-search-panel {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .close-search-panel {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        right: -25px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        z-index: 25;
-        &:before {
-          content: '';
-          display: block;
-          position: absolute;
-          top: 7px;
-          width: 20px;
-          height: 2px;
-          background: $c-dark-gray;
-          transform: rotate(45deg);
-        }
-        &:after {
-          content: '';
-          display: block;
-          position: absolute;
-          top: 7px;
-          width: 20px;
-          height: 2px;
-          background: $c-dark-gray;
-          transform: rotate(-45deg);
-        }
-      }
-    }
-  }
-
-  .submenu-list {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    &__item {
-      margin-right: 40px;
-      position: relative;
-      display: flex;
-      align-items: center;
-
-      @include _992 {
-        margin-right: 10px;
-      }
-
-      &:last-of-type {
-        margin-right: 0;
-      }
-
-      &:hover .drop-down-menu {
-        visibility: visible;
-        opacity: 1;
-      }
-    }
-  }
-
-  .submenu-title {
-    padding: 5px 25px;
-    position: relative;
-    color: $c-white;
-    border: 1px solid $c-white;
-    border-radius: 15px;
-    cursor: pointer;
-
-    @include _992 {
-      font-size: 12px;
-    }
-
-    &__user {
-      padding: 5px 25px 5px 3px;
-      border: none;
-    }
-    span {
-      color: #42a5db;
-    }
-
-    .arrow-down {
-      position: absolute;
-      color: $c-white;
-
-      @include _992 {
-        top: 2px;
-      }
-    }
-  }
-
-  .burger-menu__item {
-    display: none;
-
-    @include _992 {
-      display: block;
-    }
-  }
-
-  .drop-down-menu {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    background: $c-main-background;
-    top: 128%;
-    left: 0;
-    width: 100%;
-    z-index: 11;
-    text-align: center;
-    transition: .3s all linear;
-
-    li {
-      padding: 5px 10px;
-      transition: .3s all ease-in;
-      border-bottom: 1px solid rgba($c-white, .3);
-
-      &:hover {
-        background: $c-gray;
-      }
-    }
-
-    a {
-      color: $c-white;
-    }
-  }
-
-  .avatar {
-    color: $c-white;
-  }
 
   .burger-menu__action {
+    display: none;
     position: absolute;
     top: 25px;
     left: 10px;
     width: 25px;
     height: 25px;
+
+    @include _992 {
+      display: block;
+    }
   }
 
   .burger-menu__action_open {
@@ -269,7 +72,6 @@
       transform: rotate(-45deg);
     }
   }
-
 
   &-burger-menu {
     position: absolute;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import cl from 'classnames'
 
-import './Tabs.scss'
+import {TabsBlock} from "./styles";
 
 export default function Tabs({
     content
@@ -13,7 +13,7 @@ export default function Tabs({
 
   return (
     <>
-      <div className="tabs"  >
+      <TabsBlock>
         {content.map((item, key) => (
           <span
             key={key}
@@ -24,7 +24,7 @@ export default function Tabs({
             onClick={() => setActiveTab(key)}
           >{item.title}</span>
         ))}
-      </div>
+      </TabsBlock>
       <Content />
     </>
   )

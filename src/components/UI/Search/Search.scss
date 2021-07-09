@@ -1,44 +1,44 @@
-@import "../../../styles/variables";
-
-.dropdown-select {
-  display: flex;
-  justify-content: space-between;
-  max-width: 100%;
-
-  img {
-    display: block;
-    width: 250px;
-    height: 90px;
-    object-fit: cover;
-  }
-
-  &-description {
-    width: 100%;
-    margin-left: 10px;
-
-    .title {
-      width: 100%;
-      color: $c-main-background;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .info {
-      display: flex;
-      align-items: center;
-      span {
-        display: block;
-
-        &:first-child {
-          color: $c-strong-red;
-        }
-
-        &:last-of-type {
-          margin-left: 5px;
-        }
-      }
-    }
-
-
-  }
-}
+//@import "../../../styles/variables";
+//
+//.dropdown-select {
+//  display: flex;
+//  justify-content: space-between;
+//  max-width: 100%;
+//
+//  img {
+//    display: block;
+//    width: 250px;
+//    height: 90px;
+//    object-fit: cover;
+//  }
+//
+//  &-description {
+//    width: 100%;
+//    margin-left: 10px;
+//
+//    .title {
+//      width: 100%;
+//      color: $c-main-background;
+//      font-size: 14px;
+//      font-weight: bold;
+//    }
+//
+//    .info {
+//      display: flex;
+//      align-items: center;
+//      span {
+//        display: block;
+//
+//        &:first-child {
+//          color: $c-strong-red;
+//        }
+//
+//        &:last-of-type {
+//          margin-left: 5px;
+//        }
+//      }
+//    }
+//
+//
+//  }
+//}

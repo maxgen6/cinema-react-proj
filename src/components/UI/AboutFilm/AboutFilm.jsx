@@ -4,6 +4,14 @@ import avatar from '../../../img/756115367772455.jpeg'
 import './AboutFilm.scss'
 import { Music, Star, View } from "../../icons";
 import {Modal, Player} from "../index";
+import {
+  AboutFilmBLock,
+  AboutFilmContent,
+  AboutFilmDescription,
+  AboutFilmPoster,
+  AboutFimGallery, FilmCast, FilmDetails,
+  GalleryTrailer, SoundtracksBlock
+} from "./styles";
 
 export default function AboutFilm({ movie }) {
 
@@ -13,6 +21,7 @@ export default function AboutFilm({ movie }) {
     for (let i = 0; i < rating; i++) {
       arrStar[i] = {...arrStar[i],  props: {fill: '#fff'}}
     }
+
     return arrStar.map((item, key) => (
       <>
         {item}
@@ -22,12 +31,12 @@ export default function AboutFilm({ movie }) {
 
 
   return (
-    <div className="about-film">
-      <div className="about-film__content">
-        <div className="about-film__poster">
+    <AboutFilmBLock>
+      <AboutFilmContent>
+        <AboutFilmPoster>
           <img src={movie?.poster} alt="poster"/>
-        </div>
-        <div className="about-film__description">
+        </AboutFilmPoster>
+        <AboutFilmDescription >
           <h2 className="film-title">{movie?.title}</h2>
           <p className="film-description">{movie?.overview}</p>
           <div className="film-rating">
@@ -42,7 +51,7 @@ export default function AboutFilm({ movie }) {
             </p>
           </div>
           <div className="film-actors">
-            <div className="film-details">
+            <FilmDetails>
               <h3>Details</h3>
               <ul>
                 <li>Director: <span>{movie?.director}</span></li>
@@ -50,8 +59,8 @@ export default function AboutFilm({ movie }) {
                 <li>Country: <span>USA | UK | China</span></li>
                 <li>Language: <span>English</span></li>
               </ul>
-            </div>
-            <div className="film-cast">
+            </FilmDetails>
+            <FilmCast >
               <h3>Cast</h3>
               <ul>
                 {movie?.cast.map((item, key) => (
@@ -61,26 +70,26 @@ export default function AboutFilm({ movie }) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </FilmCast>
           </div>
-        </div>
-        <div className="about-film__gallery">
+        </AboutFilmDescription>
+        <AboutFimGallery>
           <h2>Gallery</h2>
           <Modal
             trigger={
-              <div className="gallery-trailer">
+              <GalleryTrailer >
                 <img src={movie?.poster} alt="poster"/>
-                <div className="gallery-trailer__blur">Trailer</div>
-              </div>
+                <div >Trailer</div>
+              </GalleryTrailer>
             }
             children={<Player url={'https://www.youtube.com/watch?v=MG-S05stTv8'} />}
           />
-          <a href="/#" className="soundtracks">
+          <SoundtracksBlock href="/#" className="soundtracks">
             <Music/>
             <span>Soundtracks</span>
-          </a>
-        </div>
-      </div>
-    </div>
+          </SoundtracksBlock>
+        </AboutFimGallery>
+      </AboutFilmContent>
+    </AboutFilmBLock>
   )
 }

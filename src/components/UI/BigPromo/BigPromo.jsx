@@ -1,25 +1,25 @@
 import React from "react";
 
 import {Modal, Player} from "../index";
-import './BigPromo.scss'
+import { BigPromoBlock, BigPromoPlay } from "./styles";
 
 export default function BigPromo({ backdrop }) {
 
   return (
-    <div className="big-promo">
+    <BigPromoBlock >
       <img src={backdrop} alt="bg"/>
       <Modal
         trigger={
-          <div className="big-promo__play">
+          <BigPromoPlay>
             <span className="play"></span>
             <div className="play-text">
               <p>Watch Now</p>
               <span>Start your free month</span>
             </div>
-          </div>
+          </BigPromoPlay>
         }
         children={<Player url={'https://www.youtube.com/watch?v=MG-S05stTv8'} />}
       />
-    </div>
+    </BigPromoBlock>
   )
 }

@@ -3,7 +3,7 @@ import AsyncSelect from 'react-select'
 import { useHistory } from 'react-router-dom'
 import debounce from 'lodash.debounce'
 
-import './Search.scss'
+import {SearchBlock, SearchSelectDescription} from "./styles";
 
 
 export default function Search({ closeSearchPanel, searchSpecialMovie, searchMovies }) {
@@ -15,15 +15,15 @@ export default function Search({ closeSearchPanel, searchSpecialMovie, searchMov
   const optionsLabel = props => {
     const { poster, title, imdb_rating, genres } = props
     return (
-      <div className="dropdown-select" value={title}>
+      <SearchBlock value={title}>
         <img src={poster}  alt="poster" />
-        <div className="dropdown-select-description">
+        <SearchSelectDescription>
           <p className="title">{title}</p>
           <p className="info">
             <span>{imdb_rating}</span>, <span>{genres[0]}</span>
           </p>
-        </div>
-      </div>
+        </SearchSelectDescription>
+      </SearchBlock>
     )
   }
 

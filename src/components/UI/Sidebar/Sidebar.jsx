@@ -1,10 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import './Sidebar.scss'
+import {SidebarBlock, SidebarList, SidebarListItem} from "./styles";
 
 export default function Sidebar({ handlerShowMenu }) {
-
 
   const sidebarInfo = [
     {title: `movie`,classname: '', href: '/1' },
@@ -16,23 +15,22 @@ export default function Sidebar({ handlerShowMenu }) {
     {title: `schedule`,classname: 'schedule', href: '/7' }
   ]
 
-
   return (
-    <section className="sidebar">
+    <SidebarBlock>
       <nav>
-        <ul className="sidebar-navigation__list">
-          <li className="sidebar-navigation__item">
-            <NavLink  to="/"  className="sidebar-logo">IMDb</NavLink>
-          </li>
+        <SidebarList>
+          <SidebarListItem>
+            <NavLink  to="/"  className="logo">IMDb</NavLink>
+          </SidebarListItem>
           {sidebarInfo.map((item, index) => (
-            <li className="sidebar-navigation__item" key={index}>
-              <NavLink to={item.href} exact={item.href === '/'} className="sidebar-logo" onClick={handlerShowMenu}>
+            <SidebarListItem key={index}>
+              <NavLink to={item.href} exact={item.href === '/'} className="logo" onClick={handlerShowMenu}>
                <span className={`material-icons ${item.classname}`}>{item.title}</span>
               </NavLink>
-            </li>
+            </SidebarListItem>
           ))}
-        </ul>
+        </SidebarList>
       </nav>
-    </section>
+    </SidebarBlock>
   )
 }

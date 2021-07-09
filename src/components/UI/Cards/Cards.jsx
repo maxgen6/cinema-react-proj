@@ -1,10 +1,12 @@
 import React from "react";
 
-import './Cards.scss'
 import {Link} from "react-router-dom";
+import './Cards.scss'
+// import {LinkBlock} from "./styles";
 
 
 export default function Cards({ sidebar, movieFromLS }) {
+
 
   return (
     <>

@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 
 import { AboutFilm, BigPromo } from "../../components/ui";
 import { Like, Friends } from "../../components/icons";
-import './Watch.scss'
+import {ButtonBlock, WatchBlock, WatchContent, WatchFilmInfoHeader} from "./styles";
 
 export default function Watch({ fetchSpecialMovie, movie, setToLS, setWatchLaterToLS, movieWatchLater  }) {
 
@@ -26,17 +26,18 @@ export default function Watch({ fetchSpecialMovie, movie, setToLS, setWatchLater
 
 
   return (
-    <section className="watch">
+    <WatchBlock className="watch">
       <div className="container">
         <h1 className="watch-title">Watch</h1>
 
-        <article className="watch-content">
+        <WatchContent className="watch-content">
           <BigPromo backdrop={movie?.backdrop} />
 
           <div className="film-info">
-            <div className="film-info__header">
+            <WatchFilmInfoHeader className="film-info__header">
               <h2>{movie?.title}</h2>
-              <div className="button-block">
+
+              <ButtonBlock>
                 <span className="button-block__point">IMDb {movie?.imdb_rating}</span>
                 <button onClick={setWatchLaterFilm}>
                   <span>
@@ -48,13 +49,16 @@ export default function Watch({ fetchSpecialMovie, movie, setToLS, setWatchLater
                     <Friends />
                   </span> Invite Friends
                 </button>
-              </div>
-            </div>
+              </ButtonBlock>
+
+            </WatchFilmInfoHeader>
+
             <AboutFilm movie={movie} />
           </div>
-        </article>
+
+        </WatchContent>
       </div>
 
-    </section>
+    </WatchBlock>
   )
 }

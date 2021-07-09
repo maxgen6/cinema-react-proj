@@ -5,6 +5,7 @@ import BurgerMenu from "../../ui/BurgerMenu/BurgerMenu";
 import classNames from "classnames";
 import {Search} from "../../ui";
 import {SearchIcon} from "../../icons";
+import {HeaderBlock, HeaderList, HeaderListItem, SubmenuList, SubmenuListItem} from "./styles";
 
 export default function Header() {
 
@@ -26,9 +27,9 @@ export default function Header() {
 
 
   return (
-    <header className="header">
-      <ul className="header-list">
-        <li className="header-list__item" >
+    <HeaderBlock >
+      <HeaderList >
+        <HeaderListItem >
           { activeSearch
           ?
             <div className="search-panel">
@@ -39,11 +40,11 @@ export default function Header() {
               <SearchIcon />
             </span>
           }
-        </li>
-        <li className="header-list__item">
-          <ul className="submenu-list">
-            <li className="submenu-list__item">
-              <p className="submenu-title">
+        </HeaderListItem>
+        <HeaderListItem >
+          <SubmenuList >
+            <SubmenuListItem >
+              <p>
                 IMDb<span>Pro</span>
                 <span className="material-icons arrow-down">keyboard_arrow_down</span>
               </p>
@@ -52,10 +53,10 @@ export default function Header() {
                 <li><a href="/#">example</a></li>
                 <li><a href="/#">example</a></li>
               </ul>
-            </li>
-            <li className="submenu-list__item">
+            </SubmenuListItem>
+            <SubmenuListItem >
               <span className="material-icons avatar">account_circle</span>
-              <p className="submenu-title submenu-title__user">
+              <p className="user">
                 Username
                 <span className="material-icons arrow-down">keyboard_arrow_down</span>
               </p>
@@ -64,9 +65,9 @@ export default function Header() {
                 <li><a href="/#">example</a></li>
                 <li><a href="/#">example</a></li>
               </ul>
-            </li>
-          </ul>
-        </li>
+            </SubmenuListItem>
+          </SubmenuList>
+        </HeaderListItem>
         <li className="burger-menu__action burger-menu__item">
           <span className="burger-menu__action_open" onClick={handlerShowMenu}></span>
         </li>
@@ -74,7 +75,7 @@ export default function Header() {
           <span className="burger-menu__action_close" onClick={handlerShowMenu}></span>
           <BurgerMenu handlerShowMenu={handlerShowMenu} />
         </li>
-      </ul>
-    </header>
+      </HeaderList>
+    </HeaderBlock>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Cards, Promo, Slider, Tabs } from "../../components/ui";
-import './Home.scss'
+import {ContentHome, ContentMain, ContentSidebar, ContentSidebarHeader} from "./styles";
 
 
 export default function Home({ fetchMovies, movies, movieFromLS }) {
@@ -58,10 +58,10 @@ export default function Home({ fetchMovies, movies, movieFromLS }) {
   useEffect(() => sortsGenres(), [movies])
 
   return (
-    <section className="content">
-      <article className="content-main">
+    <ContentHome className="content">
+      <ContentMain className="content-main">
         <Promo promo={randomNumber ? allMovies[randomNumber] : null} />
-        <div className="content-main__block">
+        <div className="content__block">
           <Tabs
             content={tabContent}
           />
@@ -69,20 +69,20 @@ export default function Home({ fetchMovies, movies, movieFromLS }) {
             genres={genres}
           />
         </div>
-      </article>
-      <article className="content-sidebar">
-        <div className="content-sidebar__header">
-          <h4 className="content-sidebar__title">Now Playing (Box Office)</h4>
+      </ContentMain>
+      <ContentSidebar>
+        <ContentSidebarHeader>
+          <h4>Now Playing (Box Office)</h4>
           <a href="/#">Show more</a>
-        </div>
+        </ContentSidebarHeader>
         <div className="content-sidebar__block">
           <Cards
             sidebar={true}
             movieFromLS={movieFromLS}
           />
         </div>
-      </article>
-    </section>
+      </ContentSidebar>
+    </ContentHome>
 
   )
 }

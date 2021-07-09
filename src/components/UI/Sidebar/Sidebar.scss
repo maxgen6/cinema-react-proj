@@ -1,47 +1,47 @@
-@import "../../../styles/variables";
-
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  background: $c-main-background;
-  min-height: 100vh;
-
-  @include _992 {
-    background: none;
-  }
-
-  &-navigation__list {
-    padding: 20px 15px;
-
-    @include _1024 {
-      padding: 20px 10px;
-    }
-  }
-
-  &-navigation__item {
-    margin-bottom: 30px;
-    text-align: center;
-  }
-
-  .active {
-    color: #fff;
-
-    span {
-      color: #fff;
-    }
-  }
-
-  &-logo {
-    color: $c-dark-gray;
-
-    span {
-      color: $c-dark-gray;
-    }
-
-    &:hover, &:hover span {
-      color: $c-white;
-    }
-  }
-}
+//@import "../../../styles/variables";
+//
+//
+//.sidebar {
+//  display: flex;
+//  flex-direction: column;
+//  flex: 1;
+//  background: $c-main-background;
+//  min-height: 100vh;
+//
+//  @include _992 {
+//    background: none;
+//  }
+//
+//  &-navigation__list {
+//    padding: 20px 15px;
+//
+//    @include _1024 {
+//      padding: 20px 10px;
+//    }
+//  }
+//
+//  &-navigation__item {
+//    margin-bottom: 30px;
+//    text-align: center;
+//  }
+//
+//  .active {
+//    color: #fff;
+//
+//    span {
+//      color: #fff;
+//    }
+//  }
+//
+//  &-logo {
+//    color: $c-dark-gray;
+//
+//    span {
+//      color: $c-dark-gray;
+//    }
+//
+//    &:hover, &:hover span {
+//      color: $c-white;
+//    }
+//  }
+//}

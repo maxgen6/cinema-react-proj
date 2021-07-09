@@ -9,7 +9,7 @@ import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
-import './Slider.scss'
+import {SliderBlock, SliderHeader, SwiperBlock} from "./styles";
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -23,15 +23,15 @@ export default function Slider({ genres }) {
       {genres?.map((item, index) => (
         <div key={Date.now() + index}>
           {Object.values(item).map((val, index) => (
-            <div className="slider" key={index}>
-              <div className="slider-header">
-                <h4 className="slider-title">{Object.keys(item)[index]}</h4>
-                <div className="slider-arrows">
+            <SliderBlock key={index}>
+              <SliderHeader>
+                <h4>{Object.keys(item)[index]}</h4>
+                <div className="arrows">
                   <span className="material-icons arrow-left ">keyboard_arrow_left</span>
                   <span className="material-icons arrow-right">keyboard_arrow_right</span>
                 </div>
-              </div>
-              <div className="slider-block">
+              </SliderHeader>
+              <SwiperBlock className="slider-block">
                 <Swiper
                   spaceBetween={10}
                   slidesPerView={2}
@@ -50,9 +50,7 @@ export default function Slider({ genres }) {
                       className="card-item"
                       key={value.id}
                     >
-                      <Link
-                        to={`/${value.slug}`}
-                      >
+                      <Link to={`/${value.slug}`}>
                         <img src={value.backdrop} alt="img"/>
                         <p className="card-item__title">{value.title}</p>
                         <p className="card-item__genres">{value.genres.join(', ')} <span>{value.imdb_rating} / 10</span></p>
@@ -60,8 +58,8 @@ export default function Slider({ genres }) {
                     </SwiperSlide>
                   ))}
                 </Swiper>
-              </div>
-            </div>
+              </SwiperBlock>
+            </SliderBlock>
           ))}
         </div>
       ))}
