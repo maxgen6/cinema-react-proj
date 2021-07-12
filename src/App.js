@@ -8,6 +8,7 @@ import actions from './store/actions/index'
 import { Header } from "./components/common";
 import { Sidebar } from "./components/ui";
 import { Home, Watch, WatchLater } from "./pages";
+import {WrapperContent, WrapperSidebar} from "./assets/global";
 
 
 function App({ getFromLS }) {
@@ -16,18 +17,18 @@ function App({ getFromLS }) {
 
 
   return (
-    <div className="wrapper">
-      <div className="wrapper-content">
+    <div>
+      <WrapperContent>
         <Header />
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/watch-later" component={WatchLater}/>
           <Route path="/:slug" component={Watch}/>
         </Switch>
-      </div>
-      <div className="wrapper-sidebar">
+      </WrapperContent>
+      <WrapperSidebar>
         <Sidebar />
-      </div>
+      </WrapperSidebar>
     </div>
   );
 }

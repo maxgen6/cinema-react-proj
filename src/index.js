@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 
 import { store } from './store'
 import App from './App';
-import './index.scss';
 import { ThemeProvider } from "styled-components";
+import {Global} from "./assets/global";
 
 
 const theme = {
@@ -39,6 +39,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <Global />
         <App />
       </BrowserRouter>
     </ThemeProvider>

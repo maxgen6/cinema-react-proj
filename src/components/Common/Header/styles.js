@@ -135,15 +135,13 @@ export const HeaderListItem = styled.li`
   }
 }
 
-${props => props._white && `color: red;`};
 
-${SubmenuList}{
-  
-}
+${props => props._white && `color: red;`};
 
 `
 
 export const SubmenuList = styled.ul`
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -203,4 +201,104 @@ export const SubmenuListItem = styled.li`
     visibility: visible;
     opacity: 1;
   }
+`
+
+export const BurgerMenuOpen = styled.span`
+  position: absolute;
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: ${props => props.theme.colors?.white};
+  z-index: 15;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 7px;
+    width: 25px;
+    height: 2px;
+    background: ${props => props.theme.colors?.white};
+  }
+
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 14px;
+    width: 25px;
+    height: 2px;
+    background: ${props => props.theme.colors?.white};
+  }
+`
+
+export const BurgerMenuClose = styled.span`
+  position: absolute;
+  display: none;
+  top: 25px;
+  left: 20px;
+  z-index: 15;
+  width: 25px;
+  height: 25px;
+  ${props => props._active && `display: block;`};
+
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 7px;
+    width: 25px;
+    height: 2px;
+    background: ${props => props.theme.colors?.white};
+    transform: rotate(45deg);
+  }
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 7px;
+    width: 25px;
+    height: 2px;
+    background: ${props => props.theme.colors?.white};
+    transform: rotate(-45deg);
+  }
+`
+
+export const BurgerMenuAction = styled.li`
+  display: none;
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+
+  @media ${props => props.theme.device?.laptopS} {
+    display: block;
+  }
+`
+
+export const BurgerMenuContent = styled.li`
+  position: absolute;
+  left: 15px;
+  top: 30px;
+  transform: translateX(-100%);
+  transition: .3s all;
+  
+  
+  ${props => props._active && `
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .9);
+    transform: translateX(0);
+
+    div {
+      display: block;
+    }
+  `}
+  
+  
 `
