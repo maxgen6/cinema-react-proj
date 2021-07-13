@@ -44,7 +44,7 @@ LinkBlock.Genres = styled.p`
   color: ${props => props.theme.colors?.darkGray};
   text-transform: uppercase;
 
-  @include ${props => props.theme.device?.mobileL} {
+  @media ${props => props.theme.device?.mobileL} {
     font-size: 10px;
   }
 `

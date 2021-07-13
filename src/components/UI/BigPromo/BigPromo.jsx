@@ -2,8 +2,10 @@ import React from "react";
 
 import {Modal, Player} from "../index";
 import { BigPromoBlock, BigPromoPlay } from "./styles";
+import {useTranslation} from "react-i18next";
 
 export default function BigPromo({ backdrop }) {
+  const { t } = useTranslation()
 
   return (
     <BigPromoBlock >
@@ -15,8 +17,8 @@ export default function BigPromo({ backdrop }) {
             <BigPromoPlay.Play />
 
             <BigPromoPlay.TextBlock>
-              <p>Watch Now</p>
-              <span>Start your free month</span>
+              <p>{t('BigPromo.Now')}</p>
+              <span>{t('BigPromo.Free')}</span>
             </BigPromoPlay.TextBlock>
 
           </BigPromoPlay>

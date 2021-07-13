@@ -43,13 +43,16 @@ export const ContentSidebar = styled.article`
 
 export const ContentSidebarHeader = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 5px;
     border-bottom: 1px solid ${props => props.theme.colors?.darkGray};
 
     h4 {
+      font-size: 14px;
       color: ${props => props.theme.colors?.white};
+      text-transform: uppercase;
     }
 
     a {

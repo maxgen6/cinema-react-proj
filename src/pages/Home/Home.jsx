@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {useTranslation} from "react-i18next";
 
 import { Cards, Promo, Slider, Tabs } from "../../components/ui";
 import {ContentHome, ContentMain, ContentSidebar, ContentSidebarHeader} from "./styles";
@@ -6,6 +7,7 @@ import {ContentHome, ContentMain, ContentSidebar, ContentSidebarHeader} from "./
 
 export default function Home({ fetchMovies, movies, movieFromLS }) {
 
+  const { t } = useTranslation()
   const [genres, setGenres] = useState([])
 
   const allMovies = movies?.movies
@@ -72,8 +74,8 @@ export default function Home({ fetchMovies, movies, movieFromLS }) {
       </ContentMain>
       <ContentSidebar>
         <ContentSidebarHeader>
-          <h4>Now Playing (Box Office)</h4>
-          <a href="/#">Show more</a>
+          <h4>{t('Home.Sidebar')}</h4>
+          <a href="/#">{t('Home.SidebarLink')}</a>
         </ContentSidebarHeader>
         <div className="content-sidebar__block">
           <Cards

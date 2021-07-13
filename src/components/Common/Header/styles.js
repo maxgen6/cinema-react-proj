@@ -184,6 +184,8 @@ export const SubmenuListItem = styled.li`
   position: relative;
   display: flex;
   align-items: center;
+  color: ${props => props.theme.colors?.white};
+  cursor: pointer;
 
   @media ${props => props.theme.device?.laptopS} {
     margin-right: 10px;
@@ -192,9 +194,12 @@ export const SubmenuListItem = styled.li`
   .avatar {
     color: ${props => props.theme.colors?.white};
   }
+  
+  &:last-child {
 
-  &:last-of-type {
-    margin-right: 0;
+    .drop-down-menu {
+      width: 170%;
+    }
   }
 
   &:hover .drop-down-menu {

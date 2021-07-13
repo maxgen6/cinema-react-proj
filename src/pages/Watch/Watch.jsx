@@ -4,9 +4,10 @@ import { useParams, useHistory } from 'react-router-dom'
 import { AboutFilm, BigPromo } from "../../components/ui";
 import { Like, Friends } from "../../components/icons";
 import {ButtonBlock, WatchBlock, WatchContent, WatchFilmInfoHeader} from "./styles";
+import {useTranslation} from "react-i18next";
 
 export default function Watch({ fetchSpecialMovie, movie, setToLS, setWatchLaterToLS, movieWatchLater  }) {
-
+  const { t } = useTranslation()
   const { slug } = useParams()
   const history  = useHistory()
 
@@ -28,7 +29,7 @@ export default function Watch({ fetchSpecialMovie, movie, setToLS, setWatchLater
   return (
     <WatchBlock>
       <WatchBlock.Container>
-        <WatchBlock.Title>Watch</WatchBlock.Title>
+        <WatchBlock.Title>{t('Watch.Title')}</WatchBlock.Title>
 
         <WatchContent>
           <BigPromo backdrop={movie?.backdrop} />
@@ -38,16 +39,16 @@ export default function Watch({ fetchSpecialMovie, movie, setToLS, setWatchLater
               <h2>{movie?.title}</h2>
 
               <ButtonBlock>
-                <ButtonBlock.Point>IMDb {movie?.imdb_rating}</ButtonBlock.Point>
+                <ButtonBlock.Point>{t('Watch.Rating')} {movie?.imdb_rating}</ButtonBlock.Point>
                 <button onClick={setWatchLaterFilm}>
                   <span>
                     <Like fill={buttonFill ? '#f31414' : '#fff'} />
-                  </span> Watch Later
+                  </span> {t('Watch.Later')}
                 </button>
                 <button>
                   <span>
                     <Friends />
-                  </span> Invite Friends
+                  </span> {t('Watch.Invite')}
                 </button>
               </ButtonBlock>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import {useTranslation} from "react-i18next";
 
 import avatar from '../../../img/756115367772455.jpeg'
 import { Music, Star, View } from "../../icons";
@@ -13,6 +14,8 @@ import {
 } from "./styles";
 
 export default function AboutFilm({ movie }) {
+  console.log(movie)
+  const { t } = useTranslation()
 
   const renderRating = () => {
     const rating = Math.round(Math.floor(+movie?.imdb_rating) / 2)
@@ -39,7 +42,7 @@ export default function AboutFilm({ movie }) {
         <AboutFilmDescription >
           <AboutFilmDescription.H2>{movie?.title}</AboutFilmDescription.H2>
           <AboutFilmDescription.Description>{movie?.overview}</AboutFilmDescription.Description>
-          <AboutFilmDescription.FilmRating className="film-rating">
+          <AboutFilmDescription.FilmRating>
             <p className="view">
               <View/> 334,503
             </p>
@@ -52,16 +55,16 @@ export default function AboutFilm({ movie }) {
           </AboutFilmDescription.FilmRating>
           <AboutFilmDescription.FilmActors>
             <FilmDetails>
-              <h3>Details</h3>
+              <h3>{t('AboutFilm.Details')}</h3>
               <ul>
-                <li>Director: <span>{movie?.director}</span></li>
-                <li>Writers: <span>{movie?.director}</span></li>
-                <li>Country: <span>USA | UK | China</span></li>
-                <li>Language: <span>English</span></li>
+                <li>{t('AboutFilm.Director')}: <span>{movie?.director}</span></li>
+                <li>{t('AboutFilm.Writers')}: <span>{movie?.director}</span></li>
+                <li>{t('AboutFilm.Country')}: <span>USA | UK | China</span></li>
+                <li>{t('AboutFilm.Language')}: <span>English</span></li>
               </ul>
             </FilmDetails>
             <FilmCast >
-              <h3>Cast</h3>
+              <h3>{t('AboutFilm.Cast')}</h3>
               <ul>
                 {movie?.cast.map((item, key) => (
                   <li key={key}>
@@ -75,19 +78,19 @@ export default function AboutFilm({ movie }) {
         </AboutFilmDescription>
 
         <AboutFimGallery>
-          <h2>Gallery</h2>
+          <h2>{t('AboutFilm.Gallery')}</h2>
           <Modal
             trigger={
               <GalleryTrailer >
                 <img src={movie?.poster} alt="poster"/>
-                <div >Trailer</div>
+                <div >{t('AboutFilm.Trailer')}</div>
               </GalleryTrailer>
             }
             children={<Player url={'https://www.youtube.com/watch?v=MG-S05stTv8'} />}
           />
           <SoundtracksBlock href="/#" className="soundtracks">
             <Music/>
-            <span>Soundtracks</span>
+            <span>{t('AboutFilm.Soundtracks')}</span>
           </SoundtracksBlock>
         </AboutFimGallery>
 

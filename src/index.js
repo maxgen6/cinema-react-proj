@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -7,6 +7,8 @@ import { store } from './store'
 import App from './App';
 import { ThemeProvider } from "styled-components";
 import {Global} from "./assets/global";
+
+import './assets/i18next'
 
 
 const theme = {
@@ -34,13 +36,14 @@ const theme = {
   }
 }
 
-
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Global />
-        <App />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Global />
+          <App />
+        </Suspense>
       </BrowserRouter>
     </ThemeProvider>
   </Provider>,

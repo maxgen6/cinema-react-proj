@@ -1,12 +1,11 @@
 import React from "react";
 
-import './Promo.scss'
 import {Modal, Player} from "../index";
 import {PromoBlock, PromoActions, PromoBg, PromoInfo, PromoLink} from "./styles";
 
 export default function Promo({promo}) {
   return (
-    <PromoBlock className="promo">
+    <PromoBlock>
       <PromoBg>
         <PromoBg.Image src={promo?.backdrop} alt="bg"/>
       </PromoBg>

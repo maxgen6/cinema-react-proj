@@ -58,21 +58,21 @@ AboutFilmDescription.FilmRating = styled.div`
   border-top: 1px solid ${props => props.theme.colors?.graySpan};
   border-bottom: 1px solid ${props => props.theme.colors?.graySpan};
 
-  @include ${props => props.theme.device?.mobileL} {
+  @media ${props => props.theme.device?.mobileL} {
     display: block;
   }
   
-    .view {
-    margin-right: -15px;
-    width: 20%;
-    display: flex;
-    align-items: center;
-    color: ${props => props.theme.colors?.white};
+  .view {
+  margin-right: -15px;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  color: ${props => props.theme.colors?.white};
 
-  @include _992 {
-    width: 50%;
-    margin-bottom: 10px;
-  }
+  @media ${props => props.theme.device?.laptopS} {
+      width: 50%;
+      margin-bottom: 10px;
+    }
 
     svg {
       margin-right: 10px;
@@ -86,7 +86,7 @@ AboutFilmDescription.FilmRating = styled.div`
     width: 25%;
     display: flex;
 
-  @include ${props => props.theme.device?.laptopS} {
+  @media ${props => props.theme.device?.laptopS} {
     width: 45%;
     margin-bottom: 10px;
     margin-left: 0;
@@ -103,7 +103,7 @@ AboutFilmDescription.FilmRating = styled.div`
     line-height: 16px;
     color: ${props => props.theme.colors?.white};
 
-    @include ${props => props.theme.device?.laptopS}  {
+    @media ${props => props.theme.device?.laptopS}  {
       font-size: 14px;
     }
   }
@@ -162,7 +162,7 @@ export const FilmCast = styled.div`
 export const AboutFimGallery = styled.div`
   width: 25%;
 
-  @include ${props => props.theme.device?.laptopS} {
+  @media ${props => props.theme.device?.laptopS} {
     width: 100%;
   }
 

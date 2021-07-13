@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 import BurgerMenu from "../../ui/BurgerMenu/BurgerMenu";
 import { Search } from "../../ui";
-import {SearchIcon} from "../../icons";
+import {Language, SearchIcon} from "../../icons";
 import {
   BurgerMenuAction,
   BurgerMenuClose, BurgerMenuContent,
@@ -16,8 +17,13 @@ import {
 
 export default function Header() {
 
+  const { t, i18n } = useTranslation()
   const [openBurger, setOpenBurger] = useState(false)
   const [activeSearch, setActiveSearch] = useState(false)
+
+  const handlerChangeLanguage = lang => {
+    i18n.changeLanguage(lang)
+  }
 
   const handlerShowMenu = () => {
     setOpenBurger(!openBurger)
@@ -59,7 +65,7 @@ export default function Header() {
             <SubmenuListItem >
               <span className="material-icons avatar">account_circle</span>
               <p className="user">
-                Username
+                {t('Header.1')}
                 <span className="material-icons arrow-down">keyboard_arrow_down</span>
               </p>
               <ul className="drop-down-menu">
@@ -68,6 +74,16 @@ export default function Header() {
                 <li><a href="/#">example</a></li>
               </ul>
             </SubmenuListItem>
+
+            <SubmenuListItem >
+              <Language />
+                <span className="material-icons arrow-down" style={{color: 'white'}}>keyboard_arrow_down</span>
+              <ul className="drop-down-menu">
+                <li onClick={() => handlerChangeLanguage('ru')}>Русский</li>
+                <li onClick={() => handlerChangeLanguage('en')}>English</li>
+              </ul>
+            </SubmenuListItem>
+
           </SubmenuList>
         </HeaderListItem>
 

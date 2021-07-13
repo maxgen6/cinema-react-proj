@@ -1,0 +1,33 @@
+{
+  "Header": {
+    "1": "Username"
+  },
+  "Home": {
+    "Sidebar": "Now Playing (Box Office)",
+    "SidebarLink": "Show more"
+  },
+  "Watch": {
+    "Title": "Watch",
+    "Rating": "IMDb ",
+    "Later": "Watch Later",
+    "Invite": "Invite Friends"
+  },
+  "BigPromo": {
+    "Now": "Watch Now",
+    "Free": "Start your free month"
+  },
+  "AboutFilm": {
+    "Details": "Details",
+    "Director": "Director",
+    "Writers": "Writers",
+    "Country": "Country",
+    "Language": "Language",
+    "Cast": "Cast",
+    "Gallery": "Gallery",
+    "Trailer": "Trailer",
+    "Soundtracks": "Soundtracks"
+  },
+  "WatchLater": {
+    "Later": "Watch Later"
+  }
+}
