@@ -58,17 +58,17 @@ export default function Home({ fetchMovies, movies, movieFromLS }) {
   useEffect(() => sortsGenres(), [movies])
 
   return (
-    <ContentHome className="content">
-      <ContentMain className="content-main">
+    <ContentHome>
+      <ContentMain>
         <Promo promo={randomNumber ? allMovies[randomNumber] : null} />
-        <div className="content__block">
+        <ContentMain.Block>
           <Tabs
             content={tabContent}
           />
           <Slider
             genres={genres}
           />
-        </div>
+        </ContentMain.Block>
       </ContentMain>
       <ContentSidebar>
         <ContentSidebarHeader>

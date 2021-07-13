@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import cl from "classnames";
 
-import './Modal.scss'
+import {ModalBlock} from "./styles";
 
 export default function Modal({ trigger, children }) {
 
@@ -16,22 +15,15 @@ export default function Modal({ trigger, children }) {
     document.body.style.overflow = 'auto'
   }
 
-  // document.addEventListener('click', e => {
-  //   e.target.classList.contains('modal-active') && handlerCloseModal()
-  // })
-
   return (
     <>
       <div className="trigger" onClick={handlerOpenModal}>{trigger}</div>
-      <div className={cl({
-        "modal": true,
-        "modal_active": openModal
-      })} onClick={handlerCloseModal}>
-        <div className="modal-content">
-          <span className="modal-close" onClick={handlerCloseModal}></span>
+      <ModalBlock _active={openModal} onClick={handlerCloseModal}>
+        <ModalBlock.Content >
+          <ModalBlock.Close onClick={handlerCloseModal}></ModalBlock.Close>
           {children}
-        </div>
-      </div>
+        </ModalBlock.Content>
+      </ModalBlock>
     </>
   )
 }

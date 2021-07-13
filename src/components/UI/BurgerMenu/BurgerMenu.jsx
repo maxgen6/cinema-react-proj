@@ -1,12 +1,12 @@
 import React from "react";
 
-import './BurgerMenu.scss'
 import Sidebar from "../Sidebar";
+import {BurgerMenuBlock} from "./styles";
 
 export default function BurgerMenu({handlerShowMenu}) {
   return (
-    <div className="burger-menu">
+    <BurgerMenuBlock>
       <Sidebar handlerShowMenu={handlerShowMenu} />
-    </div>
+    </BurgerMenuBlock>
   )
 }

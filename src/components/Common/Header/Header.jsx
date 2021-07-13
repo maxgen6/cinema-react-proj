@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 
-import './Header.scss'
 import BurgerMenu from "../../ui/BurgerMenu/BurgerMenu";
-import classNames from "classnames";
-import {Search} from "../../ui";
+import { Search } from "../../ui";
 import {SearchIcon} from "../../icons";
-import {HeaderBlock, HeaderList, HeaderListItem, SubmenuList, SubmenuListItem} from "./styles";
+import {
+  BurgerMenuAction,
+  BurgerMenuClose, BurgerMenuContent,
+  BurgerMenuOpen,
+  HeaderBlock,
+  HeaderList,
+  HeaderListItem,
+  SubmenuList,
+  SubmenuListItem
+} from "./styles";
 
 export default function Header() {
 
@@ -17,19 +24,14 @@ export default function Header() {
     return !openBurger ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto'
   }
 
-  const liOpenBurgerClass = classNames({
-    "header-burger-menu header-burger-menu__active burger-menu__item": openBurger,
-    "header-burger-menu burger-menu__item": !openBurger,
-  })
-
   const handlerSetSearchPanel = () => setActiveSearch(!activeSearch)
   const closeSearchPanel = item => setActiveSearch(item)
 
 
   return (
-    <HeaderBlock >
+    <HeaderBlock>
       <HeaderList >
-        <HeaderListItem _white >
+        <HeaderListItem>
           { activeSearch
           ?
             <div className="search-panel">
@@ -68,13 +70,16 @@ export default function Header() {
             </SubmenuListItem>
           </SubmenuList>
         </HeaderListItem>
-        <li className="burger-menu__action burger-menu__item">
-          <span className="burger-menu__action_open" onClick={handlerShowMenu}></span>
-        </li>
-        <li className={liOpenBurgerClass}>
-          <span className="burger-menu__action_close" onClick={handlerShowMenu}></span>
+
+        <BurgerMenuAction>
+          <BurgerMenuOpen onClick={handlerShowMenu}></BurgerMenuOpen>
+        </BurgerMenuAction>
+
+        <BurgerMenuContent  _active={openBurger}>
+          <BurgerMenuClose onClick={handlerShowMenu}  _active={openBurger}></BurgerMenuClose>
           <BurgerMenu handlerShowMenu={handlerShowMenu} />
-        </li>
+        </BurgerMenuContent>
+
       </HeaderList>
     </HeaderBlock>
   )

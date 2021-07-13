@@ -1,7 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player";
 
-import './Player.scss'
 import { PLayerBlock } from "./styles";
 
 export default function Player({ url }) {

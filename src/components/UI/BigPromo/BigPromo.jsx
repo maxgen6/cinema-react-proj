@@ -7,19 +7,23 @@ export default function BigPromo({ backdrop }) {
 
   return (
     <BigPromoBlock >
-      <img src={backdrop} alt="bg"/>
+      <BigPromoBlock.Image src={backdrop} alt="bg"/>
+
       <Modal
         trigger={
           <BigPromoPlay>
-            <span className="play"></span>
-            <div className="play-text">
+            <BigPromoPlay.Play />
+
+            <BigPromoPlay.TextBlock>
               <p>Watch Now</p>
               <span>Start your free month</span>
-            </div>
+            </BigPromoPlay.TextBlock>
+
           </BigPromoPlay>
         }
         children={<Player url={'https://www.youtube.com/watch?v=MG-S05stTv8'} />}
       />
+
     </BigPromoBlock>
   )
 }

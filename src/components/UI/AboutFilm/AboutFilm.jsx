@@ -1,7 +1,6 @@
 import React from "react";
 
 import avatar from '../../../img/756115367772455.jpeg'
-import './AboutFilm.scss'
 import { Music, Star, View } from "../../icons";
 import {Modal, Player} from "../index";
 import {
@@ -29,17 +28,18 @@ export default function AboutFilm({ movie }) {
     ))
   }
 
-
   return (
     <AboutFilmBLock>
       <AboutFilmContent>
+
         <AboutFilmPoster>
-          <img src={movie?.poster} alt="poster"/>
+          <AboutFilmPoster.Image src={movie?.poster} alt="poster"/>
         </AboutFilmPoster>
+
         <AboutFilmDescription >
-          <h2 className="film-title">{movie?.title}</h2>
-          <p className="film-description">{movie?.overview}</p>
-          <div className="film-rating">
+          <AboutFilmDescription.H2>{movie?.title}</AboutFilmDescription.H2>
+          <AboutFilmDescription.Description>{movie?.overview}</AboutFilmDescription.Description>
+          <AboutFilmDescription.FilmRating className="film-rating">
             <p className="view">
               <View/> 334,503
             </p>
@@ -49,8 +49,8 @@ export default function AboutFilm({ movie }) {
             <p className="information">
               {movie?.classification} | {movie?.length} | {movie?.genres.join(', ')} | {movie?.released_on}
             </p>
-          </div>
-          <div className="film-actors">
+          </AboutFilmDescription.FilmRating>
+          <AboutFilmDescription.FilmActors>
             <FilmDetails>
               <h3>Details</h3>
               <ul>
@@ -71,8 +71,9 @@ export default function AboutFilm({ movie }) {
                 ))}
               </ul>
             </FilmCast>
-          </div>
+          </AboutFilmDescription.FilmActors>
         </AboutFilmDescription>
+
         <AboutFimGallery>
           <h2>Gallery</h2>
           <Modal
@@ -89,6 +90,7 @@ export default function AboutFilm({ movie }) {
             <span>Soundtracks</span>
           </SoundtracksBlock>
         </AboutFimGallery>
+
       </AboutFilmContent>
     </AboutFilmBLock>
   )

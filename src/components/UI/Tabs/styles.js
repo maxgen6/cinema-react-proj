@@ -10,45 +10,45 @@ export const TabsBlock = styled.div`
     width: 100%;
   }
 
-  .tabs__item {
-    position: relative;
-    color: ${props => props.theme.colors?.darkGray};
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: .3s all;
+`
+TabsBlock.Item = styled.span`
+  position: relative;
+  color: ${props => props.theme.colors?.darkGray};
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: .3s all;
 
-    @include _992 {
-      font-size: 14px;
-    }
-  
-    @include _375 {
-      font-size: 12px;
-    }
+  @media ${props => props.theme.device?.laptopS} {
+    font-size: 14px;
+  }
 
-    &:hover {
-      color: ${props => props.theme.colors?.white};
-      &:after {
-        content: '';
-        position: absolute;
-        width: 40%;
-        height: 1px;
-        background: #076f78;
-        bottom: -3px;
-        left: 30%;
-      }
-    }
+  @media ${props => props.theme.device?.mobileM} {
+    font-size: 12px;
+  }
 
-    .tabs__item--active {
-      color: ${props => props.theme.colors?.white};
-      &:after {
-        content: '';
-        position: absolute;
-        width: 40%;
-        height: 1px;
-        background: #076f78;
-        bottom: -3px;
-        left: 30%;
-      }
+  &:hover {
+    color: ${props => props.theme.colors?.white};
+    &:after {
+      content: '';
+      position: absolute;
+      width: 40%;
+      height: 1px;
+      background: #076f78;
+      bottom: -3px;
+      left: 30%;
     }
   }
+  
+  ${props => props._active &&  `
+    color: #fff;
+    &:after {
+        content: '';
+        position: absolute;
+        width: 40%;
+        height: 1px;
+        background: #076f78;
+        bottom: -3px;
+        left: 30%;
+      }
+  `}
 `

@@ -20,12 +20,14 @@ export const AboutFilmPoster = styled.div`
     width: 100%;
   }
 
-  img {
-    width: 100%;
-    min-height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-  }  
+ 
+`
+AboutFilmPoster.Image = styled.img`
+  width: 100%;
+  min-height: 300px;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
 `
 
 export const AboutFilmDescription = styled.div`
@@ -34,33 +36,33 @@ export const AboutFilmDescription = styled.div`
   @media ${props => props.theme.device?.laptopS} {
     width: 100%;
   }
+`
 
-  h2 {
-    margin-bottom: 5px;
-    color: ${props => props.theme.colors?.white};
-  }
+AboutFilmDescription.H2 = styled.h2`
+  margin-bottom: 5px;
+  color: ${props => props.theme.colors?.white};
+`
 
-  .film-description {
-    margin-bottom: 15px;
-    font-size: 14px;
-    font-weight: 400;
-    color: ${props => props.theme.colors?.white};
-  }
+AboutFilmDescription.Description = styled.p`
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 400;
+  color: ${props => props.theme.colors?.white};
+`
 
-  .film-rating {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-top: 1px solid ${props => props.theme.colors?.graySpan};
-    border-bottom: 1px solid ${props => props.theme.colors?.graySpan};
+AboutFilmDescription.FilmRating = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid ${props => props.theme.colors?.graySpan};
+  border-bottom: 1px solid ${props => props.theme.colors?.graySpan};
 
   @include ${props => props.theme.device?.mobileL} {
     display: block;
   }
-  }
-
-  .view {
+  
+    .view {
     margin-right: -15px;
     width: 20%;
     display: flex;
@@ -105,10 +107,10 @@ export const AboutFilmDescription = styled.div`
       font-size: 14px;
     }
   }
+`
 
-  .film-actors {
-    display: flex;
-  }
+AboutFilmDescription.FilmActors = styled.div`
+  display: flex;
 `
 
 export const FilmDetails = styled.div`

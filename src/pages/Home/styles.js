@@ -18,9 +18,10 @@ export const ContentMain = styled.article`
     flex-basis: 100%;
   }
 
-  .content__block {
-    padding: 30px 20px;
-  }
+`
+
+ContentMain.Block = styled.div`
+  padding: 30px 20px;
 `
 
 export const ContentSidebar = styled.article`

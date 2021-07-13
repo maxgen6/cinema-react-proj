@@ -26,19 +26,19 @@ export default function Watch({ fetchSpecialMovie, movie, setToLS, setWatchLater
 
 
   return (
-    <WatchBlock className="watch">
-      <div className="container">
-        <h1 className="watch-title">Watch</h1>
+    <WatchBlock>
+      <WatchBlock.Container>
+        <WatchBlock.Title>Watch</WatchBlock.Title>
 
-        <WatchContent className="watch-content">
+        <WatchContent>
           <BigPromo backdrop={movie?.backdrop} />
 
-          <div className="film-info">
-            <WatchFilmInfoHeader className="film-info__header">
+          <WatchContent.FilmInfo>
+            <WatchFilmInfoHeader>
               <h2>{movie?.title}</h2>
 
               <ButtonBlock>
-                <span className="button-block__point">IMDb {movie?.imdb_rating}</span>
+                <ButtonBlock.Point>IMDb {movie?.imdb_rating}</ButtonBlock.Point>
                 <button onClick={setWatchLaterFilm}>
                   <span>
                     <Like fill={buttonFill ? '#f31414' : '#fff'} />
@@ -54,10 +54,10 @@ export default function Watch({ fetchSpecialMovie, movie, setToLS, setWatchLater
             </WatchFilmInfoHeader>
 
             <AboutFilm movie={movie} />
-          </div>
+          </WatchContent.FilmInfo >
 
         </WatchContent>
-      </div>
+      </WatchBlock.Container >
 
     </WatchBlock>
   )

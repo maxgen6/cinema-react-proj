@@ -15,7 +15,6 @@ import {SliderBlock, SliderHeader, SwiperBlock} from "./styles";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 
-
 export default function Slider({ genres }) {
 
   return (
