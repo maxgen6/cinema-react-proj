@@ -14,7 +14,6 @@ import {
 } from "./styles";
 
 export default function AboutFilm({ movie }) {
-  console.log(movie)
   const { t } = useTranslation()
 
   const renderRating = () => {
